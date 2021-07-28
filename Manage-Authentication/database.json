@@ -1,0 +1,27 @@
+[
+    {
+        "mail": "emilian-scheel@t-online.de",
+        "password": "$2b$10$aWzqgw8kL/.AyE2iKPy1QOHMO5NA8sJvaW4LcHj1S8n7LvhZ7wttq",
+        "gespeicherte_produkte": [
+            {
+                "uuid": "ksadfjlasdjkf" 
+            },
+            {
+                "uuid": "iuziuziuztzr"
+            }
+        ],
+        "eigene_produkte": [
+            {
+                "uuid": "ksadfjlasdjkf" 
+            }
+        ],
+        "uuid": "user-oier-owieur-oiwuer-oiwuer-oiwe"
+    },
+    {
+        "name": "marlene-scheel@t-online.de",
+        "password": "$2b$10$YOrYV54DTwO81UYFlzRK0Ohs6TFV.gXh25ZdWKoOu7jqTixB2qQDO",
+        "gespeicherte_produkte": [],
+        "eigene_produkte": [],
+        "uuid": "user-laksdfj-laksdjf-asldfkj-sdlfkj"
+    }
+]

@@ -1,0 +1,88 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Produktfinder</title>
+        <!-- Css -->
+        <link href="/styleheets/root.css" rel="stylesheet" type="text/css">
+        <link rel="icon" href="/assets/images/icon-logo.png">
+        <!-- JavaScript -->
+        <script type="module" src="/javascript/main.js"></script>
+        <script type="module" src="/javascript/modules.js"></script>
+        <script type="text/javascript" src="/javascript/script.js"></script>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+
+$(document).ready(function () {
+
+    document.querySelector("#footer").load("/footer.html");
+    document.querySelector("#cookies").load("/cookie_window.html");
+
+    Cookies.checkCookies();
+})
+        </script>
+    </head>
+
+    <body>
+        <!-- Header mit Menü-Icon, Webseiten-Titel, Account-Icon, Suchformular -->
+        <div id="header" class="header">
+            <!-- Webseiten-Titel -->
+            <div>
+                <h1 class="webpage-title top">Produktfinder</h1>
+            </div>
+            <!-- Account-Button -->
+            <div class="account">
+                <button><a href="/sign.html">Konto</a></button>
+            </div>
+        </div>
+
+        <!-- Zeige einen Overlay. -->
+        <div id="overlay" class="overlay" onclick="menu()"></div>
+        
+        <!-- Zeige das Cookie-Fenster. -->
+        <div id="cookies" class="cookies">
+            <h1>Cookies erlauben?</h1>
+            <p>Nutzerdaten und Sitzungen werden in den Cookies gespeichert werden.</p>
+            <button onclick="allowCookies()" class="button-primary">Erlauben</button>
+            <button onclick="rejectCookies()" class="button-primary">Ablehnen</button>
+        </div>
+
+        <!-- Zeige das Menü. -->
+        <div id="menu" class="menu"></div>
+
+        <!-- Zeige den Inhalt der Seite. -->
+        <div class="seite" id="seite">
+            <h1>Datenschutz</h1>
+            <br>
+            <h4>1. Name und Kontaktdaten des für die Verarbeitung Verantwortliche</h4>
+            <p>
+                Diese Datenschutz-Information gilt für die Datenverarbeitung durch:
+                Verantwortlicher: Vera Scheel, Buddenhagen 3, 16945 Meyenburg
+                Email: info@vera-scheel.de Telefon: +49 (0)30 – 5360 6789
+            </p>
+            <br><hr><br>
+            <h4>2. Erhebung und Speicherung personenbezogener Daten sowie Art und Zweck von deren Verwendung</h4>
+            <p>Erhebung und Speicherung personenbezogener Daten sowie Art und Zweck von deren Verwendung<br>
+                a) Beim Besuch der Website<br>
+                Beim Aufrufen unserer Website www.vera-scheel.de werden durch den auf Ihrem Endgerät zum Einsatz kommenden Browser automatisch Informationen an den Server unserer Website gesendet. Diese Informationen werden temporär in einem sog. Logfile gespeichert. Folgende Informationen werden dabei ohne Ihr Zutun erfasst und bis zur automatisierten Löschung gespeichert:
+                <br>
+                IP-Adresse des anfragenden Rechners,<br>
+                Datum und Uhrzeit des Zugriffs,<br>
+                Name und URL der abgerufenen Datei,<br>
+                Website, von der aus der Zugriff erfolgt (Referrer-URL),<br>
+                verwendeter Browser und ggf. das Betriebssystem Ihres Rechners sowie der Name Ihres Access-Providers.<br>
+                Die genannten Daten werden durch uns zu folgenden Zwecken verarbeitet:
+                <br>
+                Gewährleistung eines reibungslosen Verbindungsaufbaus der Website,<br>
+                Gewährleistung einer komfortablen Nutzung unserer Website,<br>
+                Auswertung der Systemsicherheit und -stabilität sowie<br>
+                zu weiteren administrativen Zwecken.<br>
+                Die Rechtsgrundlage für die Datenverarbeitung ist Art. 6 Abs. 1 S. 1 lit. f DSGVO. Unser berechtigtes Interesse folgt aus oben aufgelisteten Zwecken zur Datenerhebung. In keinem Fall verwenden wir die erhobenen Daten zu dem Zweck, Rückschlüsse auf Ihre Person zu ziehen.
+                <br>
+                Darüber hinaus setzen wir beim Besuch unserer Website Cookies sowie Analysedienste ein. Nähere Erläuterungen dazu erhalten Sie unter den Ziff. 4 und 5 dieser Datenschutzerklärung.
+            </p>
+        </div>
+
+        <!-- Platzhalter für den Footer -->
+        <div id="footer" class="footer"></div>
+    </body>
+</html>

@@ -1,0 +1,810 @@
+
+
+
+
+/*--------------------------------------------------------------
+>>> ÜBERSICHT DER INHALTE
+----------------------------------------------------------------
+1. Zurücksetzen
+2. Seite
+3. Produkt
+4. Header
+5. Filter
+6. Footer
+7. Menü
+8. Cookies
+9. Suchen
+10. Login und Registrierung
+11. Tab
+12. Selectbox
+--------------------------------------------------------------*/
+
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    scroll-behavior: smooth;
+    background-color: white;
+    font-family: var(--font);
+    position: relative;
+}
+a, p, h1, h2, h3, h4, h5, h6, ul {
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 0px;
+}
+* {
+    box-sizing: border-box;
+}
+
+
+
+
+
+/*--------------------------------------------------------------
+3. Produkte
+--------------------------------------------------------------*/
+
+div.seite {
+    width: var(--inner-width);
+    margin: 0 auto;
+    flex-grow: 1;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+div.filter {
+    float: left;
+    width: 220px;
+}
+div.produkte {
+    padding-left: 40px;
+    float: left;
+    width: 680px;
+}
+
+@media (max-width: 969px) {
+
+    div.seite {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    div.produkte {
+        padding-left: 40px;
+        width: 70%;
+    }
+    div.filter {
+        width: 25%;
+    }
+}
+
+@media (max-width: 549px) {
+
+    div.seite {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    div.produkte {
+        padding-left: 0px;
+        width: 100%;
+    }
+    div.filter {
+        width: 100%;
+    }
+    div.filter ul#filter-liste {
+        display: none;
+    }
+}
+
+.webpage-title {
+    color: #537dfa; 
+}
+.webpage-title.top {
+    float: left; 
+}
+.behind-title {
+    color: var(--color-secondary);
+}
+
+
+
+/*--------------------------------------------------------------
+3. Produkte
+--------------------------------------------------------------*/
+div.produkt {
+    padding: 40px 20px;
+    margin-bottom: 20px;
+    display: flex;
+    background-color: var(--grey-1);
+    box-shadow: 0px 0px 1px grey;
+    transition: 0.2s ease;
+}
+div.produkt:hover {
+    background-color: white;
+    box-shadow: 0px 0px 5px var(--grey-2);
+}
+div#produkt-liste {
+    margin: 0 auto;
+    padding-top: 20px;
+}
+div.produkt .wrapper:first-child {
+    height: 200px;
+    width: 220px;
+    float: left;
+    background: white;
+    margin-right: 20px;
+    border-radius: 10px;
+}
+div.produkt .wrapper:last-child {
+    width: 100%;
+}
+div.produkt div.produkt-bild {
+    height: 200px;
+    width: 220px;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+div.produkt h3 {
+    margin-bottom: 10px;
+}
+div.produkt p {
+    margin-top: 10px;
+    float: left;
+}
+
+div.produkt a {
+    color: var(--color-primary);
+    text-decoration: none;
+    position: relative;
+}
+
+ul.produkt-tags li.tag-kategorie {
+    list-style: none;
+    float: left;
+    font-size: 12px;
+    min-width: 50%;
+    color: var(--grey-3);
+}
+ul.sub-tags li.produkt-tag {
+    font-size: 16px;
+    color: black;
+    list-style-type: none;
+    transition: 0.2s ease;
+    position: relative;
+}
+ul.sub-tags.hover li.produkt-tag:hover {
+    background-color: var(--color-secondary);
+    color: white;
+    padding-left: 6px;
+    margin-right: 12px;
+    border-radius: 8px;
+}
+ul.sub-tags.hover li.produkt-tag::before {
+    color: white;
+    margin-right: 3px;
+}
+ul.sub-tags.hover li.produkt-tag:hover::before {
+    content: "+";
+}
+
+@media (max-width: 899px) {
+
+    div.produkt {
+        padding-left: 20px;
+        padding-right: 20px;
+        flex-direction: column;
+    }
+    div.produkt div.wrapper:first-child {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    div.produkt div.wrapper div.produkt-bild {
+        width: 100%;
+    }
+}
+
+
+
+
+
+/*--------------------------------------------------------------
+4. Header
+--------------------------------------------------------------*/
+
+div.header {
+    padding: 20px 20px; 
+    background-color: var(--color-primary);
+}
+div.header div.menu-icon {
+    margin-right: 30px;
+}
+
+div.header div.menu-icon button {
+    background-color: var(--color-secondary);
+    border: none;
+    border-radius: 20px;
+    height: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: white;
+}
+div.header div.account button {
+    background-color: var(--color-secondary);
+    border: none;
+    border-radius: 20px;
+    height: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: white;
+}
+div.header div.account button:hover, div.header div.menu-icon button:hover {
+    box-shadow: 0px 0px 5px var(--color-secondary);
+}
+
+div.header div.search-form {
+    width: 100%;
+    margin-top: 10px;
+    background-color: var(--grey-1);
+    border-radius: 10px;
+    padding-left: 15px;
+}
+div.header div.search-form .search-field {
+    background-color: var(--grey-1);
+    border: none;
+    border-radius: 10px;
+    height: 40px;
+    width: 100%;
+    color: var(--color-primary);
+}
+div.header div.search-form .search-field::after {
+    content: icon;
+}
+div.header div.search-form .search-field:focus {
+    border: none;
+    outline: none;
+}
+
+
+div.header div.menu-icon, div.header div.search-form {
+    float: left;
+}
+div.header div.account {
+    float: right;
+}
+div.header div.account button a {
+    color: white;
+    text-decoration: none;
+}
+
+
+@media (max-width: 1119px) {
+
+    div.header div.search-form {
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 549px) {
+
+    div.header div.account {
+        display: none;
+    }
+}
+
+
+
+
+/*--------------------------------------------------------------
+5. Filter
+--------------------------------------------------------------*/
+
+ul#filter-liste li.tag-kategorie {
+    margin-bottom: 6px;
+    list-style: none;
+    position: relative;
+}
+ul#filter-liste li.tag-kategorie::before {
+    color: #777;
+    content: '\002B';
+    margin-left: 5px;
+    padding-left: 8px;
+    float: right;
+    font-weight: bold;
+    padding-right: 8px;
+    border-radius: 12px;
+    background: var(--grey-1);
+    box-shadow: 0px 0px 1px grey;
+}
+ul#filter-liste li.tag-kategorie.active::before {
+    content: "\2212";
+    background: none;
+}
+ul#filter-liste li.tag-kategorie li.tag {
+    height: 0;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    transition: 0.2s ease-out;
+}
+ul#filter-liste li.tag-kategorie.active li.tag {
+    height: min-content;
+    padding: 6px 12px;
+    margin-bottom: 6px;
+}
+
+/* Tag für Filter */
+li.tag {
+    border: none;
+    outline: none;
+    margin-bottom: 6px;
+    border-radius: 8px;
+    padding: 6px 12px;
+    list-style-type: none;
+    transition: 0.2s ease;
+    background-color: var(--grey-2);
+}
+li.tag::before {
+    content: "+";
+    margin-right: 4px;
+}
+li.tag:hover {
+    background-color: var(--grey-3);
+}
+
+/* Tag für ausgewählten Filter */
+#selected-filter {
+    margin-bottom: 20px;
+}
+#selected-filter li.tag {
+    margin-left: 0px;
+    border-radius: 8px;
+    padding: 6px 12px;
+    background-color: var(--color-secondary);
+    color: white;
+    border: none;
+    transition: 0.2s ease;
+    position: relative;
+}
+#selected-filter li.tag:hover {
+    background-color: red;
+    content: "Löschen"
+}
+#selected-filter li.tag:hover::after {
+    right: 20px;
+    opacity: 1;
+}
+#selected-filter li.tag::after {
+    width: 15px;
+    height: 19px;
+    right: 0px;
+    top: 10px;
+    content: "";
+    opacity: 0;
+    transition: 0.2s ease;
+    position: absolute;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url('/assets/images/icon-trash.png');
+}
+#selected-filter li.tag::before {
+    content: "";
+    margin-right: 4px;
+}
+
+
+
+/*--------------------------------------------------------------
+6. Footer
+--------------------------------------------------------------*/
+
+div.footer {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    width: 100%;
+    bottom: 0;
+    overflow: hidden;
+    background-color: var(--color-primary);
+}
+div.footer div.wrapper {
+    margin: 0 auto;
+    width: max-content;
+}
+div.footer div.wrapper ul li {
+    list-style: none;
+}
+div.footer div.wrapper ul li a {
+    text-decoration: none;
+    color: white;
+    position: relative;
+}
+div.footer div.wrapper ul li h1 {
+    margin-bottom: 20px;
+}
+div.footer div.wrapper ul li:not(:first-child) a {
+    color: rgb(158, 158, 158);
+}
+div.footer div.wrapper ul.column {
+    float: left;
+    margin-right: 70px;
+}
+div.footer div.wrapper ul li a:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    border-bottom: 2px solid #3366FF;
+    transition: 0.4s;
+}
+div.footer div.wrapper ul li a:hover:after {
+    width: 100%;
+}
+
+@media (max-width: 599px) {
+
+    div.footer {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    div.footer div.wrapper ul.column {
+        float: none;
+        margin-bottom: 25px;
+    }
+    div.footer div.wrapper {
+        margin: 0; 
+    }
+}
+
+
+
+/*--------------------------------------------------------------
+7. Menü
+--------------------------------------------------------------*/
+
+div.overlay {
+    transition: all 0.2s ease;
+    width: 100%;
+    height: 100%;
+    left: -100%;
+    top: 0;
+    position: fixed;
+    z-index: 999;
+    background-color: var(--color-secondary);
+}
+div.overlay.active {
+    left: 0;
+}
+div.menu {
+    z-index: 1000;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    left: -100%;
+    top: 0;
+    overflow: auto;
+    transition: all 0.3s cubic-bezier(1, 0, 0, 1);
+}
+div.menu.open {
+    left: 0;
+    box-shadow: 0px 0px 100px var(--grey-3);
+    display: flex;
+}
+div.menu div.wrapper {
+    flex: 1;
+    padding-top: 20px;
+    transition: 0.2s ease;
+}
+
+div.menu div.wrapper:first-child {
+    background-color: white;
+    min-width: 350px;
+    max-width: 400px;
+}
+
+div.menu button {
+    background-color: var(--color-secondary);
+    border: none;
+    border-radius: 20px;
+    height: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left: 20px;
+    color: white;
+}
+ul.sub-menu {
+    position: absolute;
+    min-width: 200px;
+    left: 100%;
+    margin-top: -39px;
+    display: none;
+    z-index: 1200;
+    background-color: white;
+}
+ul.sub-menu li.menu-item {
+    width: 200px;
+}
+li.menu-item {
+    padding: 15px;
+    position: relative;
+    list-style-type: none;
+    background-color: var(--grey-1);
+}
+li.menu-item::after {
+    top: 11px;
+    right: 20px;
+    font-size: 22px;
+    content: "\203A";
+    position: absolute;
+    transform: rotate(0deg);
+    transition: 0.2s ease;
+}
+li.menu-item.active::after {
+    transform: rotate(90deg)
+}
+
+
+ul.sub-menu li.menu-item::before {
+    content: "+";
+    color: white;
+    text-align: center;
+    margin-right: 11px;
+    padding-left: 8px;
+    padding-right: 8px;
+    height: 100%;
+    border-radius: 20px;
+    background-color: var(--color-primary);
+}
+ul.sub-menu li.menu-item::after {
+    content: "";
+}
+li.menu-item:hover {
+    background-color: var(--grey-2);
+}
+li.menu-item:hover ul.sub-menu {
+    display: block;
+}
+div.menu div.wrapper h1 {
+    color: var(--color-primary);
+    font-size: 28px;
+    padding: 15px;
+}
+
+
+
+@media (max-width: 399px) {
+
+    div.menu div.wrapper:not(:first-child) {
+        max-width: 0px;
+    }
+
+    div.menu div.wrapper:first-child {
+        width: 100%;
+        min-width: none;
+        max-width: none;
+    }
+
+    div.menu {
+        width: 100%;
+        overflow-y: scroll;
+    }
+    li.menu-item:hover ul.sub-menu {
+        display: none;
+    }
+    li.menu-item ul.sub-menu {
+        position: initial;
+        display: none;
+        transition: 0.2s ease;
+        margin-top: 20px;
+        background-color: var(--grey-1);
+    }li.menu-item.active ul.sub-menu {
+        display: block;
+        width: 100%;
+    }
+    li.menu-item:hover ul.sub-menu {
+        background-color: var(--grey-2);
+    }
+    li.menu-item:hover ul.sub-menu li.menu-item {
+        background-color: var(--grey-2);
+    }
+}
+
+
+
+
+/*--------------------------------------------------------------
+8. Cookies
+--------------------------------------------------------------*/
+
+div.cookies {
+    bottom: 0;
+    width: 100%;
+    padding: 20px;
+    z-index: 1100;
+    position: fixed;
+    background-color: white;
+    box-shadow: 0px 0px 100px black;    
+}
+
+div.cookies.hidden {
+    display: none;
+}
+
+
+
+
+
+/*--------------------------------------------------------------
+9. Suche Kategorien
+--------------------------------------------------------------*/
+
+div.menu div.wrapper div.search-form {
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 20px;
+}
+div.menu div.wrapper div.search-form input.search-field {
+    width: 100%;
+    height: 40px;
+    border: none;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 10px;
+    color: var(--color-primary);
+    background-color: var(--grey-2);
+}
+div.menu div.wrapper div.search-form input.search-field:focus {
+    outline: none;
+}
+div.menu div.wrapper div.search-form input.search-field::placeholder {
+    color: var(--grey-4);
+}
+input.search-submit {
+    width: 60px;
+    height: 40px;
+    float: right;
+    border: none;
+    outline: none;
+    color: white;
+    position: absolute;
+    margin-left: -60px;
+    background: #4a4e69;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+
+
+
+
+
+/*--------------------------------------------------------------
+10. Login und Registrierung
+--------------------------------------------------------------*/
+
+div.login-form {
+    padding: 20px;
+    margin: 0 auto;
+    box-shadow: 0px 0px 1px grey;
+    width: var(--inner-form-width);
+    background-color: var(--grey-1);
+}
+div.login-form input:not(:last-child), div.login-form h1:not(:last-child) {
+    margin-bottom: 30px;
+}
+div.login-form input::placeholder {
+    color: var(--grey-3);
+}
+div.login-form h1 {
+    text-align: center;
+}
+div.login-form div.wrapper {
+    width: 100%;
+    text-align: center;
+}
+div.login-form div.wrapper input {
+    margin-bottom: 0px;
+}
+
+
+
+/*--------------------------------------------------------------
+11. Tab
+--------------------------------------------------------------*/
+
+button.tab-link {
+    flex: 1;
+    outline: none;
+    padding: 15px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    transition: 0.2s ease;
+    background-color: var(--grey-1);
+    border-bottom: 2px solid var(--color-secondary);
+}
+
+button.tab-link:hover {
+    background-color: var(--grey-2);
+}
+div.tab-bar {
+    margin: 0 auto;
+    padding-top: 50px;
+    width: var(--inner-width);
+}
+div.tab-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
+div.tab-content:not(:first-child) {
+    display: none;
+}
+
+/* Form für Eingaben */
+div.form {
+    padding: 20px 20px;
+    margin-bottom: 20px;
+    transition: 0.2s ease;
+    box-shadow: 0px 0px 1px grey;
+    background-color: var(--grey-1);
+}
+div.form div.wrapper:not(:first-child) {
+    margin-top: 20px;
+}
+div.form input[type="text"] {
+    width: 100%;
+    border: none;
+    outline: none;
+    color: black;
+    border-radius: 6px;
+    padding: 12px 20px;
+    background-color: white;
+}
+div.form input::placeholder {
+    color: var(--grey-2)
+}
+
+@media (max-width: 969px) {
+    div.tab-bar {
+        padding-top: 0;
+    }
+    div.tab-link {
+        padding-top: 20px;
+        padding-left: 20px;
+    }
+}
+
+
+
+
+
+/*--------------------------------------------------------------
+12. Selectbox
+--------------------------------------------------------------*/
+
+select.box {
+    width: 100%;
+    padding: 6px;
+    background: var(--grey-1);
+    border: none;
+    border-radius: 6px;
+    outline: none;
+    box-shadow: 0px 0px 1px grey;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    position: relative;
+}
+
+select.box::after {
+    color: black;
+    margin-right: 0px;
+    margin-top: 0px;
+    width: 10px;
+    height: 10px;
+    content: 'Down';
+}

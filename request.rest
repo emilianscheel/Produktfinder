@@ -1,0 +1,48 @@
+
+
+### 
+# ANMELDEN
+###
+POST http://localhost:1000/signin/
+Content-Type: application/json
+
+{
+    "mail": "emilian-scheel@t-online.de",
+    "password": "Emilian2610"
+}
+
+
+### 
+# REGISTRIEREN
+###
+POST http://localhost:1000/signup/
+Content-Type: application/json
+
+{
+    "mail": "emiliane-scheel@t-online.de",
+    "password": "Emilian2610"
+}
+
+
+### 
+# ABMELDEN
+###
+POST http://localhost:1000/logout/
+Content-Type: application/json
+
+{
+    "mail": "emilian-scheel@t-online.de",
+    "password": "Emilian2610"
+}
+
+
+### 
+# TOKEN
+###
+POST http://localhost:1000/token/
+Content-Type: application/json
+
+{
+    "refreshToken": "TOKEN"
+}
+

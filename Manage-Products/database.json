@@ -1,0 +1,132 @@
+[
+    {
+        "name": "Macbook Air 2020",
+        "company_link": "https://www.apple.com/",
+        "company_name": "Apple",
+        "uuid": "ksadfjlasdjkf",
+        "price": 1129,
+        "currency": "EURO",
+        "timestamp": 1622700914,
+        "image_url": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/macbook-air-gallery3-20201110?wid=4000&hei=3072&fmt=jpeg&qlt=80&.v=1603399121000",
+        "link": "https://www.apple.com/shop/buy-mac/macbook-air/space-gray-apple-m1-chip-with-8-core-cpu-and-7-core-gpu-256gb#",
+        "description": "Unser dünnstes, leichtestes Notebook – komplett verwandelt durch den Apple M1 Chip. Bis zu 3,5x mehr CPU Leistung. Bis zu 5x höhere GPU Geschwin­digkeiten. Unsere fortschritt­­lichste Neural Engine für bis zu 9x schnelleres maschinelles Lernen. Die längste Batterie­laufzeit, die es je bei einem MacBook Air gab. Und ein leises, lüfterloses Design. Es war noch nie so leicht, so viel Power überall mit hinzunehmen.",
+        "tags": [
+            {
+                "category": "Arbeitsspeicher",
+                "name": "8 GB"
+            },
+            {
+                "category": "Interner Speicher",
+                "name": "256 GB"
+            },
+            {
+                "category": "Displaytechnik",
+                "name": "Retina"
+            },
+            {
+                "category": "Extras",
+                "name": "Touch ID"
+            },
+            {
+                "category": "Anschlüsse",
+                "name": "2 Thunderbolt"
+            },
+            {
+                "category": "Kategorie",
+                "name": "Laptop"
+            }
+        ]
+    },
+    {
+        "name": "iMac 24 Zoll",
+        "company_link": "https://www.apple.com/",
+        "company_name": "Apple",
+        "uuid": "iuziuziuztzr",
+        "price": 1449,
+        "currency": "EURO",
+        "timestamp": 1622700914,
+        "image_url": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/imac-24-blue-cto-hero-202104?wid=1254&hei=1132&fmt=jpeg&qlt=80&.v=1617479508000",
+        "link": "https://www.apple.com/de/shop/buy-mac/imac/blau-24-zoll-apple-m1-chip-mit-8-core-cpu-und-7-core-gpu-256gb#",
+        "description": "Leicht zu verstehen. Unglaublich leistungs­stark. Und dafür gemacht, dass du arbeiten, spielen und kreativ sein kannst wie noch nie. Er kommt mit jeder Menge Apps, die direkt einsatzbereit sind. Mit kosten­losen, regel­mäßigen Software­updates, sodass alles auf dem aktuellen Stand bleibt und nahtlos funktioniert. Und wenn du schon ein iPhone hast, fühlt er sich vertraut an, sobald du ihn einschaltest.",
+        "tags": [
+            {
+                "category": "Flächenleistung",
+                "name": "2400 qm"
+            },
+            {
+                "category": "Interner Speicher",
+                "name": "256 GB"
+            },
+            {
+                "category": "Displaytechnik",
+                "name": "Retina"
+            },
+            {
+                "category": "Extras",
+                "name": "Touch ID"
+            },
+            {
+                "category": "Anschlüsse",
+                "name": "2 Thunderbolt"
+            },
+            {
+                "category": "Tastaturlayout",
+                "name": "Deutsch"
+            },
+            {
+                "category": "Kategorie",
+                "name": "Desktop Computer"
+            }
+        ]
+    },
+    {
+        "name": "iPhone 11",
+        "company_link": "https://www.apple.com/",
+        "company_name": "Apple",
+        "uuid": "0sdf80a9sdf8",
+        "price": 679,
+        "currency": "EURO",
+        "timestamp": 1622700918,
+        "image_url": "https://assets.mmsrg.com/isr/166325/c1/-/ASSET_MMS_78841951/mobile_200_200_png",
+        "link": "https://www.mediamarkt.de/de/product/_apple-iphone-11-64-gb-schwarz-dual-sim-2699885.html",
+        "description": "",
+        "tags": [
+            {
+                "category": "Kategorie",
+                "name": "Smartphone"
+            },
+            {
+                "category": "Interner Speicher",
+                "name": "64 GB"
+            },
+            {
+                "category": "Prozessor",
+                "name": "A13 Bionic"
+            },
+            {
+                "category": "SIM-Kartenformat",
+                "name": "Nano SIM"
+            },
+            {
+                "category": "SIM-Kartenformat",
+                "name": "eSIM"
+            },
+            {
+                "category": "Anschlüsse",
+                "name": "2 Thunderbolt"
+            },
+            {
+                "category": "Kameraauflösung",
+                "name": "12 Megapixel"
+            },
+            {
+                "category": "Bildschirmdiagonale",
+                "name": "6.1 Zoll"
+            },
+            {
+                "category": "Betriebssystem",
+                "name": "iOS 13"
+            }
+        ]
+    } 
+]

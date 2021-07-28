@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Produktfinder</title>
+        <!-- Css -->
+        <link href="/styleheets/root.css" rel="stylesheet" type="text/css">
+        <link rel="icon" href="/assets/images/icon-logo.png">
+        <!-- JavaScript -->
+        <script type="module" src="/javascript/main.js"></script>
+        <script type="module" src="/javascript/modules.js"></script>
+        <script type="text/javascript" src="/javascript/script.js"></script>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+
+$(document).ready(function () {
+
+    document.querySelector("#footer").load("/footer.html");
+    document.querySelector("#cookies").load("/cookie_window.html");
+
+    Cookies.checkCookies();
+})
+        </script>
+    </head>
+
+    <body>
+        <!-- Header mit Menü-Icon, Webseiten-Titel, Account-Icon, Suchformular -->
+        <div id="header" class="header">
+            <!-- Webseiten-Titel -->
+            <div>
+                <h1 class="webpage-title top">Produktfinder</h1>
+            </div>
+            <!-- Account-Button -->
+            <div class="account">
+                <button><a href="/sign.html">Konto</a></button>
+            </div>
+        </div>
+
+        <!-- Zeige das Cookie-Fenster. -->
+        <div id="cookies" class="cookies"></div>
+
+        <!-- Zeige den Inhalt der Seite. -->
+        <div class="seite" id="seite">
+            <h1>Cookies</h1>
+            <p>
+                Cookies werden verwendet, um Nutzerdaten zu speichern und personalisierte Produkte anzuzeigen. Möchtest du die Cookies...
+            </p>
+            <button class="button-primary" onclick="Cookies.rejectCookies();">Alle ablehnen</button>
+            <button class="button-primary" onclick="Cookies.allowCookies();">Akzeptieren</button>
+        </div>
+
+        <!-- Platzhalter für den Footer -->
+        <div id="footer" class="footer"></div>
+    </body>
+</html>

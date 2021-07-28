@@ -1,0 +1,103 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Produktfinder - Anmelden</title>
+        <!-- Css -->
+        <link href="/styleheets/root.css" rel="stylesheet" type="text/css">
+        <link rel="icon" href="/assets/images/icon-logo.png">
+        <!-- JavaScript -->
+        <script type="module" src="/javascript/main.js"></script>
+        <script type="module" src="/javascript/modules.js"></script>
+        <script type="text/javascript" src="/javascript/script.js"></script>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+
+$(document).ready(function () {
+
+    document.querySelector("#footer").load("/footer.html");
+    document.querySelector("#cookies").load("/cookie_window.html");
+
+    Cookies.checkCookies();
+})
+        </script>
+    </head>
+
+    <body>
+
+        <div id="header" class="header">
+            <div>
+                <h1 class="webpage-title top">Account</h1>
+            </div>
+            <div class="account">
+                <button><a href="#">Hilfe</a></button>
+            </div>
+        </div>
+
+
+        <!-- Zeige einen Overlay. -->
+        <div id="overlay" class="overlay" onclick="menu()"></div>
+        
+        <!-- Zeige das Cookie-Fenster. -->
+        <div id="cookies" class="cookies">
+            <h1>Cookies erlauben?</h1>
+            <p>Nutzerdaten und Sitzungen werden in den Cookies gespeichert werden.</p>
+            <button onclick="allowCookies()" class="button-primary">Erlauben</button>
+            <button onclick="rejectCookies()" class="button-primary">Ablehnen</button>
+        </div>
+
+
+        <div class="tab-bar">
+            <div class="tab-wrapper">
+                <button class="tab-link" onclick="öffneTab('merkliste')">Merkliste</button>
+                <button class="tab-link" onclick="öffneTab('produkte')">Produkte</button>
+                <button class="tab-link" onclick="öffneTab('neues_produkt')">Neues Produkt</button>
+            </div>
+        </div>
+
+        <!-- Zeige den Inhalt der Seite. -->
+        <div class="seite" id="seite">
+            <!-- Filter -->
+            <div>
+                <div class="tab-content" id="merkliste">
+                    <h1>Merkliste</h1>
+                    <!-- List der gemerkten Produkten. -->
+                    <div id="produkte-merkliste"></div>
+                </div>
+    
+                <div class="tab-content" id="produkte">
+                    <h1>Produkte</h1>
+                    <!-- Liste der eigenen Produkte. -->
+                    <div id="eigene-produkte"></div>
+                </div>
+    
+                <div class="tab-content" id="neues_produkt">
+                    <h1>Neues Produkt</h1>
+                    <div class="form">
+                        <!-- Textfeld für den Namen -->
+                        <div class="wrapper">
+                            <h4>Name</h4>
+                            <input type="text" placeholder="Name für das Produkt hier eingeben...">
+                        </div>
+                        <!-- Textfeld für die Beschreibung -->
+                        <div class="wrapper">
+                            <h4>Beschreibung</h4>
+                            <input type="text" placeholder="Beschreibung für das Produkt hier eingeben...">
+                        </div>
+                         <!-- Textfeld für den Bilder -->
+                        <div class="wrapper">
+                            <h4>Link zum Bild</h4>
+                            <input type="text" placeholder="Hier die Link-Adresse zu einem Bild...">
+                        </div>
+                        <!-- Butten zum Erstellen des Produkts -->
+                        <div class="wrapper">
+                            <input type="button" value="Erstellen" class="button-primary">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Platzhalter für den Footer -->
+        <div id="footer" class="footer"></div>
+    </body>
+</html>
