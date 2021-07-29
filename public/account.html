@@ -1,50 +1,34 @@
 <html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Produktfinder - Anmelden</title>
+        <title>Produktfinder - Nutzer</title>
         <!-- Css -->
-        <link href="/styleheets/root.css" rel="stylesheet" type="text/css">
-        <link rel="icon" href="/assets/images/icon-logo.png">
+        <link href="/css/root.css" rel="stylesheet" type="text/css">
+        <link rel="icon" href="/assets/icons/icon-logo.png">
         <!-- JavaScript -->
-        <script type="module" src="/javascript/main.js"></script>
-        <script type="module" src="/javascript/modules.js"></script>
         <script type="text/javascript" src="/javascript/script.js"></script>
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script>
-
-$(document).ready(function () {
-
-    document.querySelector("#footer").load("/footer.html");
-    document.querySelector("#cookies").load("/cookie_window.html");
-
-    Cookies.checkCookies();
-})
-        </script>
+        <script type="text/javascript" src="/javascript/modules/jquery.min.js"></script>
     </head>
 
     <body>
+        <script type="module">
+
+            import { load } from "./javascript/modules/document.js";
+
+            $(document.body).append(load("/footer.html"))
+            $(document.body).append(load("/cookie_window.html"))
+        </script>
 
         <div id="header" class="header">
-            <div>
-                <h1 class="webpage-title top">Account</h1>
+            <!-- Text-Element -->
+            <div class="text-element">
+                <h1>Account</h1>
             </div>
-            <div class="account">
+            <!-- Right-Element -->
+            <div class="right-element">
                 <button><a href="#">Hilfe</a></button>
             </div>
         </div>
-
-
-        <!-- Zeige einen Overlay. -->
-        <div id="overlay" class="overlay" onclick="menu()"></div>
-        
-        <!-- Zeige das Cookie-Fenster. -->
-        <div id="cookies" class="cookies">
-            <h1>Cookies erlauben?</h1>
-            <p>Nutzerdaten und Sitzungen werden in den Cookies gespeichert werden.</p>
-            <button onclick="allowCookies()" class="button-primary">Erlauben</button>
-            <button onclick="rejectCookies()" class="button-primary">Ablehnen</button>
-        </div>
-
 
         <div class="tab-bar">
             <div class="tab-wrapper">
@@ -96,8 +80,5 @@ $(document).ready(function () {
                 </div>
             </div>
         </div>
-
-        <!-- Platzhalter für den Footer -->
-        <div id="footer" class="footer"></div>
     </body>
 </html>

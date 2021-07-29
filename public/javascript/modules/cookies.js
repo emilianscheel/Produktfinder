@@ -1,27 +1,53 @@
-export class Cookies {
+export class Cookie {
+
+    static set(key, value, expires) {
+        const d = new Date();
+        d.setTime(d.getTime() + (expires*24*60*60*1000));
+        expires = "expires=" + d.toUTCString();
+        document.cookie = key + "=" + value + ";" + expires + ";";
+    }
+
+    static get(key) {
+        let name = key + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(';');
+        for(let i = 0; i <ca.length; i++) {
+          let c = ca[i];
+          while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+          }
+          if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+          }
+        }
+        return "";
+    }
+}
+
+export class JSONCookie extends Cookie {
 
     static get() {
-        if (document.cookie == '') document.cookie = '{}'
-        var cookies = JSON.parse(document.cookie)
-        return cookies;
+        let json = super.get('json')
+        if (json.isEmpty()) json = '{}';
+        return JSON.parse(json);
     }
 
     static set(cookies) {
-        document.cookie = JSON.stringify(cookies);
+        super.set('json', JSON.stringify(cookies), 30);
     }
 
     static setAttr(key, value) {
-        var cookies = Cookies.get();
+        var cookies = JSONCookie.get();
         cookies[key] = value;
-        Cookies.set(cookies);
+        JSONCookie.set(cookies);
     }
 
     static attr(key) {
-        return Cookies.get()[key]
+        return JSONCookie.get()[key]
     }
 
     static append(key, value) {
-        var cookies = Cookies.get();
+        var cookies = JSONCookie.get();
         if (Array.isArray(cookies[key])) {
             cookies[key].push(value);
         } else {
@@ -29,40 +55,39 @@ export class Cookies {
             list.push(value)
             cookies[key] = list;
         }
-        Cookies.set(cookies)
+        JSONCookie.set(cookies)
     }
 
     static remove(key, value) {
-        var cookies = Cookies.get();
+        var cookies = JSONCookie.get();
         if (Array.isArray(cookies[key])) { 
             cookies[key].splice(cookies[key].indexOf(value), 1);
         }
-        Cookies.set(cookies)
+        JSONCookie.set(cookies)
     }
 
     static checkCookies() {
-        console.log(Cookies.get())
         // Falls die Cookies schon angenommen oder abgelehnt wurde, verstecke das Cookie-Fenster.
-        if (!Cookies.attr('allow_cookies') || Cookies.attr('allow_cookies') == true) {
+        if (JSONCookie.attr('allow_cookies') == true) {
             $('#cookies').addClass('hidden');
         }
     }
     
     static rejectCookies() {
-        Cookies.setAttr('allow_cookies', false)
+        JSONCookie.setAttr('allow_cookies', false)
         // Verstecke das Cookie-Fenster.
         $('#cookies').addClass('hidden');
     }
     
     static allowCookies() {
-        Cookies.setAttr('allow_cookies', true)
+        JSONCookie.setAttr('allow_cookies', true)
         // Verstecke das Cookie-Fenster.
         $('#cookies').addClass('hidden');
     }
     
     static isLoggedIn() {
         // Falls in den Cookies Nutzerdaten gespeichert sind, gebe „true“ zurück.
-        if (Cookies.attr('user')) { return true } else {
+        if (JSONCookie.attr('user')) { return true } else {
             return false;
         }
     }

@@ -24,10 +24,8 @@ function signIn(request, response, next) {
             // Füge den REFRESH_TOKEN zu der Liste hinzu und gebe beide zurück
             refreshTokens.push(refreshToken)
             response.json({
-                "tokens": { 
-                    "accessToken": accessToken, 
-                    "refreshToken": refreshToken 
-                },
+                "accessToken": accessToken,
+                "refreshToken": refreshToken,
                 "uuid": ExistierenderNutzer.uuid })
             // Sende Status 200: „Ok“ zurück.
             response.status(200)

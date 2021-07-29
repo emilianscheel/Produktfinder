@@ -128,10 +128,10 @@ var credentials = {
 }
 
 var httpsServer = https.createServer(credentials, app).listen(process.env.HTTPS_PORT, () => {
-    console.log(`-> Https-Server läuft auf ${process.env.HTTPS_URL}`);
+    console.log(`»»» Gesicherter Server (https) läuft auf 433`);
 });
 var httpServer = http.createServer(app).listen(process.env.HTTP_PORT, () => {
-    console.log(`-> Http-Server läuft auf ${process.env.HTTP_URL}`);
+    console.log(`»»» Einfacher Server (http) läuft auf Port 8080`);
 });
 
 

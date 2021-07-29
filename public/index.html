@@ -3,91 +3,65 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Produktfinder</title>
         <!-- Css -->
-        <link href="/styleheets/root.css" rel="stylesheet" type="text/css">
-        <link rel="icon" href="/assets/images/icon-logo.png">
+        <link href="/css/root.css" rel="stylesheet" type="text/css">
+        <link rel="icon" href="/assets/icons/icon-logo.png">
         <!-- JavaScript -->
-        <script type="module" src="/javascript/main.js"></script>
-        <script type="module" src="/javascript/modules.js"></script>
         <script type="text/javascript" src="/javascript/script.js"></script>
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script type="module">
-
-import { ladeProdukte, ladeKategorien, ladeFilter, ladeSuche, ladeSelectBoxen } from './javascript/main.js';
-
-$(document).ready(function () {
-
-    document.querySelector("#menu").load("/menu.html");
-    document.querySelector("#footer").load("/footer.html");
-
-    // Lade die Produkte und formatiere sie in HTML.
-    ladeProdukte();
-    // Lade die Kategorien in das Menü.
-    ladeKategorien();
-    // Lade die Filter zum Suchen von Produkten.
-    ladeFilter();
-    // Lade die Suchfunktion.
-    ladeSuche();
-    // Lade die Select-Boxen.
-    ladeSelectBoxen();
-
-    Cookies.checkCookies();
-})
-        </script>
+        <script type="text/javascript" src="/javascript/modules/jquery.min.js"></script>
     </head>
 
     <body>
-        <!-- Header mit Menü-Icon, Webseiten-Titel, Account-Icon, Suchformular -->
-        <div id="header" class="header">
-            <!-- Menü-Icon zum Öffnen des Menüs. -->
-            <div class="menu-icon">
-                <button onclick="menu()">&#9776; Kategorien</button>
-            </div>
-            <!-- Webseiten-Titel -->
-            <div>
-                <h1 class="webpage-title top">Produktfinder</h1>
-            </div>
-            <!-- Account-Button -->
-            <div class="account">
-                <button><a href="/sign.html">Konto</a></button> 
-            </div>
-            <!-- Suchformular -->
-            <div class="search-form">
-                <input class="search-field" type="search" id="suche-produkte" placeholder="Suche nach Produktnamen..." onchange="
-                    Cookies.setAttr('searchtext', $('#suche-produkte').val());
-                    window.location.reload();">
-                <input class="search-submit" type="button" onclick="
-                Cookies.setAttr('searchtext', $('#suche-produkte').val()); 
-                window.location.reload()" value="Los">
-            </div>
-        </div>
+        <script type="module">
 
-        <!-- Zeige einen Overlay. -->
-        <div id="overlay" class="overlay" onclick="menu()"></div>
-        
-        <!-- Zeige das Cookie-Fenster. -->
-        <div id="cookies" class="cookies">
-            <h1>Cookies erlauben?</h1>
-            <p>Nutzerdaten und Sitzungen werden in den Cookies gespeichert werden.</p>
-            <button onclick="Cookies.allowCookies()" class="button-primary">Erlauben</button>
-            <button onclick="Cookies.rejectCookies()" class="button-primary">Ablehnen</button>
-        </div>
+            import { ladeProdukte, ladeKategorien, ladeFilter } from './javascript/modules/main.js';
+            import { load } from "./javascript/modules/document.js";
+            
+            $(document.body).prepend(load("/header.html"))
+            $(document.body).append(load("/cookie_window.html"));
+            $(document.body).append(load("/menu.html"));
+            $(document.body).append(load("/footer.html"));
 
-        <!-- Zeige das Menü. -->
-        <div id="menu" class="menu"></div>
+            let query = new URLSearchParams(document.location.search)
+            if (query.get('attrs')) {
+                $('#attrs-select').val(query.get('attrs')).change()
+            }
+            if (query.get('sort')) {
+                $('#sort-select').val(query.get('sort')).change()
+            }
 
+            $("#attrs-select").on("change", function() {
+                let query = new URLSearchParams(document.location.search)
+                query.set('attrs', $(this).val());
+                window.open('?' + query.toString(), '_self');
+            })
+
+            $("#sort-select").on("change", function() {
+                let query = new URLSearchParams(document.location.search)
+                query.set('sort', $(this).val());
+                window.open('?' + query.toString(), '_self');
+            })
+            
+            // Lade die Produkte und formatiere sie in HTML.
+            ladeProdukte();
+            // Lade die Kategorien in das Menü.
+            ladeKategorien();
+            // Lade die Filter zum Suchen von Produkten.
+            ladeFilter();
+
+            $('#produkt-anzahl').text(`Anzahl: ${$('#produkt-liste').children().length}`)
+            $('#filter-anzahl').text(`Anzahl: ${$('#selected-filter').children().length}`)
+            $('#suche-produkte').val(new URLSearchParams(document.location.search).get('text'))
+        </script>
         <!-- Zeige den Inhalt der Seite. -->
         <div class="seite" id="seite">
             <!-- linke Spalte -->
-            <div class="filter">
-                <!-- Einstellungen -->
+            <div class="column">
                 <h1>Einstellungen</h1>
                 <div>
                     <!-- Einstellung: Anzahl Eigenschaften pro Produkt -->
                     <form>
-                        <label for="attribute-count">Eigenschaften pro Produkt:</label>
-                        <select name="attribute-count" id="attribute-count" class="box" onchange="
-                        Cookies.setAttr('attribute-count', $('#attribute-count').val());
-                        window.location.reload();">
+                        <label for="attrs-select">Eigenschaften pro Produkt:</label>
+                        <select name="attrs-select" id="attrs-select" class="box">
                             <option value="4">Maximal 4</option>
                             <option value="6">Maximal 6</option>
                             <option value="8">Maximal 8</option>
@@ -95,12 +69,10 @@ $(document).ready(function () {
                             <option value="12">Maximal 12</option>
                         </select>
                     </form>
-                    <!-- Einstellung: Sortieren nach  -->
+                    <!-- Einstellung: Sortieren nach -->
                     <form>
-                        <label for="sort-by">Sortieren nach:</label>
-                        <select name="sort-by" id="sort-by" class="box" onchange="
-                        Cookies.setAttr('sort-by', $('#sort-by').val());
-                        window.location.reload();">
+                        <label for="sort-select">Sortieren nach:</label>
+                        <select name="sort-select" id="sort-select" class="box">
                             <option value="price---ascending">Preis: aufsteigend</option>
                             <option value="price---descending">Preis: absteigend</option>
                             <option value="timestamp---ascending">Neuestes Produkt</option>
@@ -110,19 +82,16 @@ $(document).ready(function () {
                 </div>
                 <!-- Filter -->
                 <h1>Filter</h1>
-                <h3 class="behind-title" id="filter-anzahl">Anzahl: 0</h3>
+                <h3 id="filter-anzahl">Anzahl: 0</h3>
                 <ul id="selected-filter"></ul>
                 <ul id="filter-liste"></ul>
             </div>
             <!-- rechte Spalte: Produkte -->
-            <div class="produkte">
+            <div class="column">
                 <h1>Alle Produkte</h1>
-                <h3 class="behind-title" id="produkt-anzahl">Anzahl: 0</h3>
-                <div id="produkt-liste"></div>
+                <h3 id="produkt-anzahl">Anzahl: 0</h3>
+                <ul id="produkt-liste"></ul>
             </div>
         </div>
-
-        <!-- Platzhalter für den Footer -->
-        <div id="footer" class="footer"></div>
     </body>
 </html>

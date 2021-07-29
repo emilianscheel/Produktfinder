@@ -3,47 +3,32 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Produktfinder</title>
         <!-- Css -->
-        <link href="/styleheets/root.css" rel="stylesheet" type="text/css">
-        <link rel="icon" href="/assets/images/icon-logo.png">
+        <link href="/css/root.css" rel="stylesheet" type="text/css">
+        <link rel="icon" href="/assets/icons/icon-logo.png">
         <!-- JavaScript -->
-        <script type="module" src="/javascript/main.js"></script>
-        <script type="module" src="/javascript/modules.js"></script>
         <script type="text/javascript" src="/javascript/script.js"></script>
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script>
-
-$(document).ready(function () {
-
-    document.querySelector("#footer").load("/footer.html");
-    document.querySelector("#cookies").load("/cookie_window.html");
-
-    Cookies.checkCookies();
-})
-        </script>
+        <script type="text/javascript" src="/javascript/modules/jquery.min.js"></script>
     </head>
 
     <body>
+        <script type="module">
+
+            import { load } from "./javascript/modules/document.js";
+
+            $(document.body).append(load("/footer.html"));
+            $(document.body).append(load("/cookie_window.html"));
+        </script>
+
         <!-- Header mit Menü-Icon, Webseiten-Titel, Account-Icon, Suchformular -->
         <div id="header" class="header">
             <!-- Webseiten-Titel -->
-            <div>
-                <h1 class="webpage-title top">Produktfinder</h1>
+            <div class="text-element">
+                <h1>Produktfinder</h1>
             </div>
             <!-- Account-Button -->
-            <div class="account">
+            <div class="right-element">
                 <button><a href="/sign.html">Konto</a></button>
             </div>
-        </div>
-
-        <!-- Zeige einen Overlay. -->
-        <div id="overlay" class="overlay" onclick="menu()"></div>
-        
-        <!-- Zeige das Cookie-Fenster. -->
-        <div id="cookies" class="cookies">
-            <h1>Cookies erlauben?</h1>
-            <p>Nutzerdaten und Sitzungen werden in den Cookies gespeichert werden.</p>
-            <button onclick="allowCookies()" class="button-primary">Erlauben</button>
-            <button onclick="rejectCookies()" class="button-primary">Ablehnen</button>
         </div>
 
         <!-- Zeige das Menü. -->
@@ -81,8 +66,5 @@ $(document).ready(function () {
                 Darüber hinaus setzen wir beim Besuch unserer Website Cookies sowie Analysedienste ein. Nähere Erläuterungen dazu erhalten Sie unter den Ziff. 4 und 5 dieser Datenschutzerklärung.
             </p>
         </div>
-
-        <!-- Platzhalter für den Footer -->
-        <div id="footer" class="footer"></div>
     </body>
 </html>

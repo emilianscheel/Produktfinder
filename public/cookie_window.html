@@ -1,4 +1,21 @@
-<h1>Cookies erlauben?</h1>
-<p>Nutzerdaten und Sitzungen werden in den Cookies gespeichert werden.</p>
-<button onclick="Cookies.allowCookies()" class="button-primary">Erlauben</button>
-<button onclick="Cookies.rejectCookies()" class="button-primary">Ablehnen</button>
+<script type="module">
+
+    import { JSONCookie } from './javascript/modules/cookies.js';
+
+    $('#button-allow').on('click', function() {
+        JSONCookie.allowCookies();
+    })
+
+    $('#button-reject').on('click', function() {
+        JSONCookie.rejectCookies();
+    })
+
+    JSONCookie.checkCookies();
+</script>
+
+<div id="cookies" class="cookies">
+    <h1>Cookies erlauben?</h1>
+    <p>Nutzerdaten und Sitzungen werden in den Cookies gespeichert werden.</p>
+    <button id="button-allow" class="button-primary">Erlauben</button>
+    <button id="button-reject" class="button-primary">Ablehnen</button>
+</div>
