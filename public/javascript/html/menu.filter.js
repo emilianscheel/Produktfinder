@@ -7,7 +7,7 @@ export class MenuFilter extends Filter {
 
         var item = $('<li></li>')
         item.addClass('menu-item')
-        item.text(this.json['name'])
+        item.text(this.json['title'])
 
         item.on('click', function() {
             Filter.addFilter(_this);

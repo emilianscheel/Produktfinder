@@ -17,6 +17,11 @@
 
             $(document.body).append(load("/footer.html"));
             $(document.body).append(load("/cookie_window.html"));
+
+            // Header
+            $('#button-account').on('click', function() {
+                window.open(document.location.protocol + '/account.html', '_self')
+            })
         </script>
 
         <!-- Header mit Menü-Icon, Webseiten-Titel, Account-Icon, Suchformular -->
@@ -27,7 +32,7 @@
             </div>
             <!-- Account-Button -->
             <div class="right-element">
-                <button><a href="/sign.html">Konto</a></button>
+                <button class="button-primary" id="button-account">Konto</button>
             </div>
         </div>
 

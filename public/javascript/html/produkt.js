@@ -31,7 +31,7 @@ export class Produkt {
 
         var title = $('<a></a>')
         title.addClass('produkt-title')
-        title.text(this.json['name'])
+        title.text(this.json['title'])
         title.attr('href', this.json['link'])
 
         headline.append(name)
@@ -42,7 +42,7 @@ export class Produkt {
         price.text(`${this.json['price']} ${this.json['currency']}`)
 
         // Tags
-        let tags = this.json['tags']
+        let tags = this.json['configurations'][0]['tags']
         let tagContainer = $('<ul></ul>')
         tagContainer.addClass('produkt-tags')
                 
@@ -73,7 +73,7 @@ export class Produkt {
 
             var item = $('<li></li>')
             item.addClass('produkt-tag')
-            item.text(tag['name'])
+            item.text(tag['title'])
             
             item.on('click', function () {
                 Filter.addFilter(new Filter(tag))
@@ -103,8 +103,10 @@ export class Produkt {
     static getTagsOf(produkte) {
         var tags = [];
         produkte.forEach((produkt) => {
-            produkt['tags'].forEach((tag) => {
-                tags.push(tag);
+            produkt['configurations'].forEach((configuration) => {
+                configuration['tags'].forEach((tag) => {
+                    tags.push(tag);
+                })
             })
         })
         return tags;
@@ -116,7 +118,7 @@ export class Produkt {
         if (!text) return tags;        
     
         tags = tags.filter((tag) => {
-            return tag['name'].toLowerCase().includes(text.toLowerCase()) || tag['category'].toLowerCase().includes(text.toLowerCase());
+            return tag['title'].toLowerCase().includes(text.toLowerCase()) || tag['category'].toLowerCase().includes(text.toLowerCase());
         });
         return tags;
     }

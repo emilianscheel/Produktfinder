@@ -25,17 +25,21 @@
             $('#button-signup').on('click', function() {
                 Backend.signUp($('#login-mail').val(), $('#login-password').val());
             })
+
+            $('#button-title').on('click', function () {
+                window.open(document.location.protocol + '/', '_self')
+            })
         </script>
 
         <!-- Header -->
         <div id="header" class="header">
             <!-- Text-Element -->
             <div class="text-element">
-                <h1>Account</h1>
+                <button class="button-title" id="button-title">Produktfinder</button>
             </div>
             <!-- Rechtes-Element -->
             <div class="right-element">
-                <button><a href="#">Dokumentation</a></button>
+                <button class="button-primary" id="button-help">Hilfe</button>
             </div>
         </div>
 

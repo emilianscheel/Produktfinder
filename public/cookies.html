@@ -24,6 +24,10 @@
                 JSONCookie.rejectCookies();
             })
 
+            $('#button-title').on('click', function () {
+                window.open(document.location.protocol + '/', '_self')
+            })
+
             $(document.body).append(load("/footer.html"));
             $(document.body).append(load("/cookie_window.html"));
         </script>
@@ -32,7 +36,7 @@
         <div id="header" class="header">
             <!-- Webseiten-Titel -->
             <div class="text-element">
-                <h1>Produktfinder</h1>
+                <button class="button-title" id="button-title">Produktfinder</button>
             </div>
             <!-- Account-Button -->
             <div class="right-element">

@@ -14,7 +14,7 @@ export class Filter {
         var item = $('<li></li>')
         item.addClass('filter')
         item.attr('id', id)
-        item.text(this.json['name'])
+        item.text(this.json['title'])
 
         item.on('click', function () {
             Filter.addFilter(_this);
@@ -23,14 +23,14 @@ export class Filter {
     }
 
     buildSelected() {
-        let id = `${this.json['category']}---${this.json['name']}`.replace(' ', '_')
+        let id = `${this.json['category']}---${this.json['title']}`.replace(' ', '_')
 
         var item = $('<li></li>')
         item.addClass('filter')
         item.attr('id', id)
 
         var title = $('<a></a>')
-        title.text(this.json['name'])
+        title.text(this.json['title'])
 
         var category = $('<a></a>')
         category.text(this.json['category'])
@@ -46,13 +46,13 @@ export class Filter {
 
     static addFilter(filter) {
         $('#selected-filter').append(filter.buildSelected());
-        Cookies.append('selected-filter', filter);
+        JSONCookie.append('selected-filter', filter);
         Filter.reloadAll();
     }
 
     static removeFilter(filter) {
         $('#' + filter).remove();
-        Cookies.remove('selected-filter', filter);
+        JSONCookie.remove('selected-filter', filter);
         Filter.reloadAll();
     }
 

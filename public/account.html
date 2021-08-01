@@ -14,19 +14,52 @@
         <script type="module">
 
             import { load } from "./javascript/modules/document.js";
-
+            import { Backend } from "./javascript/modules/backend.js";
+            import { Produkt } from "./javascript/html/produkt.js";
+            import { Cookie } from "./javascript/modules/cookies.js";
+ 
             $(document.body).append(load("/footer.html"))
             $(document.body).append(load("/cookie_window.html"))
+
+            if (!Cookie.get('user_token') || !Cookie.get('user_refresh') || !Cookie.get('user_id')) {
+                window.open(document.location.protocol + '/sign.html', '_self')
+            }
+
+            loadBookmarks()
+            loadProducts()
+
+            async function loadBookmarks() {
+                let bookmarks = await Backend.bookmarksOfUser();
+
+                bookmarks.forEach(function (bookmark) {
+                    $('#produkte-merkliste').append(new Produkt(bookmark).build());
+                })
+            }
+
+            async function loadProducts() {
+                let products = await Backend.productsOfUser();
+                
+                products.forEach(function (product) {
+                    $('#eigene-produkte').append(new Produkt(product).build());
+                })
+            }
+            
+            // Header
+            $('#button-create-product').on('click', function() {
+                window.open(document.location.protocol + '/neues_produkt', '_self')
+            })
+
+            $('#button-title').on('click', function () {
+                window.open(document.location.protocol + '/', '_self')
+            })
         </script>
 
         <div id="header" class="header">
-            <!-- Text-Element -->
             <div class="text-element">
-                <h1>Account</h1>
+                <button class="button-title" id="button-title">Produktfinder</button>
             </div>
-            <!-- Right-Element -->
             <div class="right-element">
-                <button><a href="#">Hilfe</a></button>
+                <button class="button-primary" id="button-create-product">Neues Produkt erstellen</button>
             </div>
         </div>
 
@@ -34,7 +67,6 @@
             <div class="tab-wrapper">
                 <button class="tab-link" onclick="öffneTab('merkliste')">Merkliste</button>
                 <button class="tab-link" onclick="öffneTab('produkte')">Produkte</button>
-                <button class="tab-link" onclick="öffneTab('neues_produkt')">Neues Produkt</button>
             </div>
         </div>
 
@@ -52,31 +84,6 @@
                     <h1>Produkte</h1>
                     <!-- Liste der eigenen Produkte. -->
                     <div id="eigene-produkte"></div>
-                </div>
-    
-                <div class="tab-content" id="neues_produkt">
-                    <h1>Neues Produkt</h1>
-                    <div class="form">
-                        <!-- Textfeld für den Namen -->
-                        <div class="wrapper">
-                            <h4>Name</h4>
-                            <input type="text" placeholder="Name für das Produkt hier eingeben...">
-                        </div>
-                        <!-- Textfeld für die Beschreibung -->
-                        <div class="wrapper">
-                            <h4>Beschreibung</h4>
-                            <input type="text" placeholder="Beschreibung für das Produkt hier eingeben...">
-                        </div>
-                         <!-- Textfeld für den Bilder -->
-                        <div class="wrapper">
-                            <h4>Link zum Bild</h4>
-                            <input type="text" placeholder="Hier die Link-Adresse zu einem Bild...">
-                        </div>
-                        <!-- Butten zum Erstellen des Produkts -->
-                        <div class="wrapper">
-                            <input type="button" value="Erstellen" class="button-primary">
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

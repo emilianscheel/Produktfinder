@@ -5,21 +5,50 @@ const minAuth = require('../Manage-Authentication/min.js');
 
 
 
-function ladeGespeicherteProdukte(user_uuid) {
-    // Lade die Nutzer.
-    let Nutzer = minAuth.ladeNutzer();
-    // Suche den aktuellen Nutzer mithilfe der mitgegebenen Nutzer-UUID.
-    let user = Nutzer.find(user => {
-        return user.uuid == user_uuid
-    });
-    // Falls der Nutzer nicht existiert, gebe das zurück.
-    if (user == null) { console.log("Nutzer existiert nicht."); return }
+function ladeGespeicherteProdukte(user_id) {
+
+    let user = minAuth.getUserById(user_id);
+    // Fehler
+    if (!user) return;
+
     // Lade die Produkte.
-    let produkte = minProd.ladeProdukte();
+    let produkte = minProd.loadProducts();
     let nProdukte = []
     // Füge die Produkte hinzu, die bei den gespeicherten mit ihrer UUID verlinkt sind.
     produkte.forEach(produkt => {
-        if (user.gespeicherte_produkte.some(produktLink => produktLink.uuid == produkt.uuid)) {
+        if (user['bookmarks'].some(produktLink => produktLink['id'] == produkt['id'])) {
+            nProdukte.push(produkt);
+        }
+    });
+    // Gebe die ausgewählten Produkte für den Nutzer zurück.
+    return nProdukte
+}
+
+function speicherGespeicherteProdukte(user_id, products) {
+
+    let user = minAuth.getUserById(user_id);
+    // Fehler
+    if (!user) return;
+
+    products.forEach(product => {
+        user['products'].push(product['id']);
+    });
+
+    minAuth.saveUser(user)
+}
+
+function ladeEigeneProdukte(user_id) {
+
+    let user = minAuth.getUserById(user_id);
+    // Fehler
+    if (!user) return;
+
+    // Lade die Produkte.
+    let produkte = minProd.loadProducts();
+    let nProdukte = []
+    // Füge die Produkte hinzu, die bei den gespeicherten mit ihrer UUID verlinkt sind.
+    produkte.forEach(produkt => {
+        if (user['products'].some(produktLink => produktLink['id'] == produkt['id'])) {
             nProdukte.push(produkt);
         }
     });
@@ -28,36 +57,11 @@ function ladeGespeicherteProdukte(user_uuid) {
 }
 
 
-function ladeEigeneProdukte(user_uuid) {
-    // Lade die Nutzer.
-    let Nutzer = minAuth.ladeNutzer();
-    // Suche den aktuellen Nutzer mithilfe der mitgegebenen Nutzer-UUID.
-    let user = Nutzer.find(user => {
-        return user.uuid == user_uuid
-    });
-    // Falls der Nutzer nicht existiert, gebe das zurück.
-    if (user == null) { console.log("Nutzer existiert nicht."); return }
-    // Lade die Produkte.
-    let produkte = minProd.ladeProdukte();
-    let nProdukte = []
-    // Füge die Produkte hinzu, die bei den gespeicherten mit ihrer UUID verlinkt sind.
-    produkte.forEach(produkt => {
-        if (user.eigene_produkte.some(produktLink => produktLink.uuid == produkt.uuid)) {
-            nProdukte.push(produkt);
-        }
-    });
-    // Gebe die ausgewählten Produkte für den Nutzer zurück.
-    return nProdukte
-}
-
-
-function minimiereSuchtext(produkte, suchText) {
+function minimiereSuchtext(produkte, text) {
     let nProdukte = []
     // Filtere die Produkte aus, dessen Name nicht im Suchtext vorkommen.
-    produkte.forEach(produkt => {
-        let produkt_name = produkt.name.toUpperCase()
-        let suchtext     = suchText.toUpperCase()
-        if (produkt_name.includes(suchtext)) {
+    produkte.forEach((produkt) => {
+        if (produkt['title'].toUpperCase().includes(text.toUpperCase())) {
             nProdukte.push(produkt)
         }
     });
@@ -69,9 +73,11 @@ function minimiereFilter(produkte, filter) {
     let nProdukte = []
     // Falls die Tags vom Produkt alle bei den Filtern ausgewählt sind, füge das Produkt hinzu.
     produkte.forEach(produkt => {
-        if (vergleiche(produkt['tags'], filter)) {
-            nProdukte.push(produkt)
-        }
+        produkt['configurations'].some((configuration) => {
+            if (vergleiche(configuration['tags'], filter)) {
+                nProdukte.push(produkt)
+            }
+        })
     });
     // Gebe die Produkte gefiltert duch die Filter zurück.
     return nProdukte
@@ -87,10 +93,15 @@ function vergleiche(filter1, filter2) {
 }
 
 function sortiere(produkte, sortierung) {
+    const attribute = sortierung.split('---')[0]
+    const direction = sortierung.split('---')[1]
+
+    console.log(sortierung)
+
     // Sortiere die Produkte nach dem Attribut.
-    produkte.sort((a,b) => (a[sortierung.attribute] > b[sortierung.attribute]) ? 1 : ((b[sortierung.attribute] > a[sortierung.attribute]) ? -1 : 0))
+    produkte.sort((a,b) => (a[attribute] > b[attribute]) ? 1 : ((b[attribute] > a[attribute]) ? -1 : 0))
     // Falls die Sortierung absteigend ist, drehe das Array um.
-    if (sortierung.direction == "descending") {
+    if (direction == "descending") {
         produkte.reverse()
     }
     // Gebe die sortierten Produkte zurück.
@@ -113,5 +124,6 @@ module.exports = {
     ladeEigeneProdukte,
     minimiereSuchtext,
     minimiereFilter,
-    sortiere
+    sortiere,
+    speicherGespeicherteProdukte
 }

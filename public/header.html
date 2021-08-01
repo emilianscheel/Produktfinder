@@ -1,6 +1,14 @@
 <script>
-    $('#menu-button').on('click', function () {
+    $('#button-menu').on('click', function () {
         toggleMenu()
+    })
+
+    $('#button-account').on('click', function () {
+        window.open(document.location.protocol + '/account.html', '_self')
+    })
+
+    $('#button-title').on('click', function () {
+        window.open(document.location.protocol + '/', '_self')
     })
 
     $('#suche-produkte').on('change', function () {
@@ -15,13 +23,13 @@
 
 <div id="header" class="header">
     <div class="left-element">
-        <button id="menu-button">&#9776; Kategorien</button>
+        <button class="button-primary" id="button-menu">&#9776; Kategorien</button>
     </div>
-    <div class="text-element">
-        <h1>Produktfinder</h1>
+    <div class="left-element">
+        <button class="button-title" id="button-title">Produktfinder</button>
     </div>
     <div class="right-element">
-        <button><a href="/sign.html">Konto</a></button>
+        <button class="button-primary" id="button-account">Konto</button>
     </div>
     <input class="search-field" type="search" id="suche-produkte" placeholder="In „Produkten“ suchen...">
 </div>

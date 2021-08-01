@@ -198,37 +198,20 @@ ul.produkt-tags li.tag-item ul.sub-tags.hover li.produkt-tag:hover::before {
 --------------------------------------------------------------*/
 
 div.header {
-    padding: 20px 20px; 
+    padding: 20px 20px 10px 20px; 
     background-color: var(--color-primary);
 }
 div.header div.left-element {
     margin-right: 30px;
 }
-div.header div.text-element h1 {
-    color: #537dfa; 
+div.header div.text-element {
     float: left;
+    margin-bottom: 10px;
 }
-div.header div.left-element button {
-    background-color: var(--color-secondary);
-    border: none;
-    border-radius: 20px;
-    height: 40px;
-    padding-left: 20px;
-    padding-right: 20px;
-    color: white;
-    cursor: pointer;
+div.header div.text-element h1 {
+    color: #537dfa;
 }
-div.header div.right-element button {
-    background-color: var(--color-secondary);
-    border: none;
-    border-radius: 20px;
-    height: 40px;
-    padding-left: 20px;
-    padding-right: 20px;
-    color: white;
-    cursor: pointer;
-}
-div.header div.right-element button:hover, div.header div.left-element button:hover {
+div.header div.right-element button.button-primary:hover, div.header div.left-element button.button-primary:hover {
     box-shadow: 0px 0px 5px var(--color-secondary);
 }
 
@@ -236,7 +219,7 @@ div.header div.right-element button:hover, div.header div.left-element button:ho
 div.header input.search-field {
     width: 100%;
     height: 40px;
-    margin-top: 10px;
+    margin-bottom: 10px;
     padding-left: 20px;
     padding-right: 20px;
     border-radius: 10px;
@@ -251,16 +234,13 @@ div.header input.search-field::placeholder {
     color: var(--grey-4);
 }
 
-
 div.header div.left-element {
     float: left;
+    margin-bottom: 10px;
 }
 div.header div.right-element {
     float: right;
-}
-div.header div.right-element button a {
-    color: white;
-    text-decoration: none;
+    margin-bottom: 10px;
 }
 
 @media (max-width: 1119px) {
@@ -272,8 +252,13 @@ div.header div.right-element button a {
 
 @media (max-width: 549px) {
 
-    div.header div.right-element {
-        display: none;
+    div.header div.right-element, div.header div.left-element {
+        float: left;
+        margin-right: 20px;
+    }
+
+    div.header div.text-element {
+        float: right;
     }
 }
 
@@ -353,7 +338,7 @@ ul#filter-liste li.filter-item li.filter:hover {
 }
 #selected-filter li.filter:hover {
     background-color: red;
-    content: "Löschen"
+    content: "Löschen";
 }
 #selected-filter li.filter:hover::after {
     right: 20px;
@@ -370,7 +355,7 @@ ul#filter-liste li.filter-item li.filter:hover {
     position: absolute;
     background-size: contain;
     background-repeat: no-repeat;
-    background-image: url('/assets/images/icon-trash.png');
+    background-image: url('/assets/icons/icon-trash.png');
 }
 #selected-filter li.filter::before {
     content: "";
@@ -384,6 +369,12 @@ ul#filter-liste li.filter-item li.filter:hover {
     margin-left: 8px;
 }
 
+@media (max-width: 969px) {
+
+    #selected-filter li.filter {
+        padding: 10px 14px;
+    }
+}
 
 
 
@@ -491,9 +482,11 @@ div.menu div.wrapper div.head input.search-field {
     border-radius: 10px;
     color: var(--color-primary);
     background-color: var(--grey-2);
+    border: 2px solid var(--grey-2);
 }
 div.menu div.wrapper div.head input.search-field:focus {
-    outline: 2px solid black;
+    border: 2px solid black;
+    outline: none;
 }
 div.menu div.wrapper div.head {
     padding-top: 20px;
@@ -767,6 +760,12 @@ select.box::after {
 }
 
 
+@media (max-width: 969px) {
+
+    select.box {
+        padding: 12px;
+    }
+}
 
 /*--------------------------------------------------------------
 13. Elemente
@@ -790,6 +789,22 @@ select.box::after {
 .button-secondary {
     background-color: white;
     color: var(--color-secondary);
+}
+
+.button-title {
+    color: #537dfa;
+    font-size: 1.8em;
+    background: none;
+    border: none;
+    outline: none;
+    padding: 0px;    
+    font-family: var(--font);
+    font-weight: 600;
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 0px;
 }
 
 /* Input */

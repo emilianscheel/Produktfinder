@@ -1,3 +1,5 @@
+import { Cookie } from "./cookies.js";
+
 export class Backend {
 
     static hostname() {
@@ -5,47 +7,43 @@ export class Backend {
     }
 
     static async products(filter, text, sort) {
-        let data = await fetch("/produkte", { "searchtext": text, "filter": filter, "sort": sort });
+        let data = await Backend.fetch("/produkte", { "text": text, "filter": filter, "sort": sort });
 
-        return Array.from(await data.json())
+        return Array.from(await data)
     }
 
     static async bookmarksOfUser() {
-        let query = new URLSearchParams(document.location.search);
 
-        let data = await Backend.fetch('/merkliste', { "accessToken": query.get('accessToken'), "uuid": query.get('refreshToken') })
+        let data = await Backend.fetch('/merkliste', { "user_token": Cookie.get('user_token'), "user_id": Cookie.get('user_id') })
 
-        return Array.from(await data.json());
+        return Array.from(await data);
     }
 
     static async productsOfUser() {
-        let query = new URLSearchParams(document.location.search);
 
-        let data = await Backend.fetch('/eigene_produkte', { "accessToken": query.get('accessToken'), "uuid": query.get('refreshToken') })
+        let data = await Backend.fetch('/eigene_produkte', { "user_token": Cookie.get('user_token'), "user_id": Cookie.get('user_id') })
 
-        return Array.from(await data.json());
+        return Array.from(data);
     }
 
     static async signIn(mail, password) {
         let data = await Backend.fetch('/signin', { "mail": mail, "password": password })
 
-        let query = new URLSearchParams()
-        query.set('accessToken', data.accessToken)
-        query.set('refreshToken', data.refreshToken)
-        query.set('uuid', data.uuid)
+        Cookie.set('user_token', data.accessToken, 30);
+        Cookie.set('user_refresh', data.refreshToken, 30)
+        Cookie.set('user_id', data.uuid)
     
-        window.open(document.location.protocol + '/account.html' + '?' + query.toString())
+        window.open(document.location.protocol + '/account.html', '_self')
     }
     
     static async signUp(mail, password) {
         let data = await Backend.fetch('/signin', { "mail": mail, "password": password })
-
-        let query = new URLSearchParams()
-        query.set('accessToken', data.accessToken)
-        query.set('refreshToken', data.refreshToken)
-        query.set('uuid', data.uuid)
+        
+        Cookie.set('user_token', data.accessToken, 30);
+        Cookie.set('user_refresh', data.refreshToken, 30)
+        Cookie.set('user_id', data.uuid)
     
-        window.open(document.location.protocol + '/account.html' + '?' + query.toString())
+        window.open(document.location.protocol + '/account.html', '_self')
     }
 
     static async fetch(href, body) {
@@ -56,6 +54,13 @@ export class Backend {
         })
         // Zeige den Fehler in der Konsole.
         if (!response.ok) {
+
+            if (response.status == 403) {
+                let query = new URLSearchParams()
+                query.set('reason', '403 Forbidden')
+                window.open(document.location.protocol + '/sign.html', '_self')
+            } 
+
             console.error(`Fehler ${response.status}: ${response.statusText}`);
         }
         // Gebe die Antwort als Array zurück.
