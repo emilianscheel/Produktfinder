@@ -87,7 +87,22 @@ function vergleiche(filter1, filter2) {
     // Prüfe, ob der 1. Filter alle 2. Filter enthält.
     return filter2.every(filter2 => {
         return filter1.some(filter1 => {
-            return filter1.compare(filter2.json);
+            if (filter1['type'] == filter2['type']) {
+                // Statisch
+                if (filter1['type'] == 'static') {
+                    return filter1.sameAs(filter2);
+                } 
+                // Dynamisch
+                else if (filter1['type'] == 'dynamic') {
+                    if (parseInt(filter1['min']) >= parseInt(filter2['min']) && parseInt(filter1['max']) <= parseInt(filter2['max'])) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+            } else {
+                return false;
+            }
         })
     });
 }
@@ -95,9 +110,6 @@ function vergleiche(filter1, filter2) {
 function sortiere(produkte, sortierung) {
     const attribute = sortierung.split('---')[0]
     const direction = sortierung.split('---')[1]
-
-    console.log(sortierung)
-
     // Sortiere die Produkte nach dem Attribut.
     produkte.sort((a,b) => (a[attribute] > b[attribute]) ? 1 : ((b[attribute] > a[attribute]) ? -1 : 0))
     // Falls die Sortierung absteigend ist, drehe das Array um.
@@ -108,7 +120,7 @@ function sortiere(produkte, sortierung) {
     return produkte
 }
 
-Object.prototype.compare = function compare(object) {
+Object.prototype.sameAs = function sameAs(object) {
     currentKeys = Object.keys(this);
     return currentKeys.every((key) => {
         return this[key] == object[key];

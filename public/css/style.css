@@ -1,0 +1,1017 @@
+
+/*--------------------------------------------------------------
+>>> ÜBERSICHT DER INHALTE
+----------------------------------------------------------------
+1. Zurücksetzen
+2. Seite
+3. Produkt
+4. Header
+5. Filter
+6. Footer
+7. Menü
+8. Cookies
+9. Suchen
+10. Login und Registrierung
+11. Tab
+12. Selectbox
+13. Elemente
+--------------------------------------------------------------*/
+
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    scroll-behavior: smooth;
+    background-color: white;
+    font-family: var(--font);
+    position: relative;
+}
+a, p, h1, h2, h3, h4, h5, h6, ul {
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 0px;
+}
+* {
+    box-sizing: border-box;
+}
+
+h3 {
+    color: var(--color-secondary);
+}
+
+
+
+
+
+/*--------------------------------------------------------------
+3. Produkte
+--------------------------------------------------------------*/
+
+div.seite {
+    width: var(--inner-width);
+    margin: 0 auto;
+    flex-grow: 1;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+div.column:first-child {
+    float: left;
+    width: 240px;
+}
+div.column:not(:first-child) {
+    padding-left: 40px;
+    float: left;
+    width: 660px;
+}
+
+@media (max-width: 969px) {
+
+    div.seite {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    div.column:first-child {
+        width: 100%;
+        padding-left: 0px;
+    }
+    div.column:not(:first-child) {
+        padding-left: 0px;
+        width: 100%;
+    }
+    div.column ul#dynamische-filter-liste {
+        display: none;
+    }
+}
+
+
+
+
+
+/*--------------------------------------------------------------
+3. Produkte
+--------------------------------------------------------------*/
+
+div#produkt-liste {
+    margin: 0 auto;
+    padding-top: 20px;
+}
+li.produkt {
+    padding: 40px 20px;
+    margin-bottom: 20px;
+    display: flex;
+    background-color: var(--grey-1);
+    box-shadow: 0px 0px 1px grey;
+    transition: 0.2s ease;
+}
+li.produkt:hover {
+    background-color: white;
+    box-shadow: 0px 0px 5px var(--grey-2);
+}
+li.produkt div.wrapper:first-child {
+    height: 200px;
+    width: 220px;
+    float: left;
+    background: white;
+    margin-right: 20px;
+    border-radius: 10px;
+}
+li.produkt div.wrapper:last-child {
+    width: 100%;
+}
+li.produkt div.wrapper div.produkt-bild {
+    height: 200px;
+    width: 220px;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+li.produkt h3 {
+    margin-bottom: 10px;
+}
+li.produkt p {
+    margin-top: 10px;
+    float: left;
+}
+li.produkt a {
+    color: var(--color-primary);
+    text-decoration: none;
+    position: relative;
+}
+
+/* Produkt-Tags */
+ul.produkt-tags li.tag-item {
+    list-style: none;
+    float: left;
+    font-size: 12px;
+    min-width: 50%;
+    color: var(--grey-3);
+}
+ul.produkt-tags li.tag-item ul.sub-tags li.produkt-tag {
+    font-size: 16px;
+    color: black;
+    list-style-type: none;
+    transition: 0.2s ease;
+    position: relative;
+    cursor: pointer;
+}
+ul.produkt-tags li.tag-item ul.sub-tags.hover li.produkt-tag:hover {
+    background-color: var(--color-secondary);
+    color: white;
+    padding-left: 6px;
+    margin-right: 12px;
+    border-radius: 8px;
+}
+ul.produkt-tags li.tag-item ul.sub-tags.hover li.produkt-tag::before {
+    color: white;
+    margin-right: 3px;
+}
+ul.produkt-tags li.tag-item ul.sub-tags.hover li.produkt-tag:hover::before {
+    content: "+";
+}
+
+@media (max-width: 669px) {
+
+    li.produkt {
+        padding-left: 20px;
+        padding-right: 20px;
+        flex-direction: column;
+    }
+    li.produkt div.wrapper:first-child {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    li.produkt div.wrapper div.produkt-bild {
+        width: 100%;
+    }
+}
+
+
+
+
+
+/*--------------------------------------------------------------
+4. Header
+--------------------------------------------------------------*/
+
+div.header {
+    padding: 20px 20px 10px 20px; 
+    background-color: var(--color-primary);
+}
+div.header div.left-element {
+    margin-right: 30px;
+}
+div.header div.text-element {
+    float: left;
+    margin-bottom: 10px;
+}
+div.header div.text-element h1 {
+    color: #537dfa;
+}
+div.header div.right-element button.button-primary:hover, div.header div.left-element button.button-primary:hover {
+    box-shadow: 0px 0px 5px var(--color-secondary);
+}
+
+
+div.header input.search-field {
+    width: 100%;
+    height: 40px;
+    margin-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 10px;
+    border: none;
+    color: var(--color-primary);
+    background-color: var(--grey-1);
+}
+div.header input.search-field:focus {
+    outline: none;
+}
+div.header input.search-field::placeholder {
+    color: var(--grey-4);
+}
+
+div.header div.left-element {
+    float: left;
+    margin-bottom: 10px;
+}
+div.header div.right-element {
+    float: right;
+    margin-bottom: 10px;
+}
+
+@media (max-width: 1119px) {
+
+    div.header div.search-element {
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 549px) {
+
+    div.header div.right-element, div.header div.left-element {
+        float: left;
+        margin-right: 20px;
+    }
+
+    div.header div.text-element {
+        float: right;
+    }
+}
+
+
+
+
+/*--------------------------------------------------------------
+5. Filter
+--------------------------------------------------------------*/
+
+ul#dynamische-filter-liste li.filter-item {
+    margin-bottom: 6px;
+    list-style: none;
+    position: relative;
+}
+ul#dynamische-filter-liste li.filter-item a.title::before {
+    content: "􀌆";
+    font-family: 'SF-Pro';
+    margin-right: 5px;
+}
+ul#dynamische-filter-liste li.filter-item a.title::after {
+    color: #777;
+    content: '\002B';
+    margin-left: 5px;
+    padding-left: 8px;
+    float: right;
+    font-weight: bold;
+    padding-right: 8px;
+    border-radius: 12px;
+    background: var(--grey-1);
+    box-shadow: 0px 0px 1px grey;
+    cursor: pointer;
+    font-family: 'Padauk';
+}
+ul#dynamische-filter-liste li.filter-item.active a.title::after {
+    content: "-";
+    background: none;
+}
+/* Tags für auswählbare, dynamische Filter */ 
+ul#dynamische-filter-liste li.filter-item div.slider-container {
+    height: 0;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    transition: 0.2s ease-out;
+    opacity: 0;
+}
+ul#dynamische-filter-liste li.filter-item.active div.slider-container {
+    height: 60px;
+    margin-bottom: 6px;
+    border: none;
+    outline: none;
+    margin-bottom: 6px;
+    border-radius: 8px;
+    list-style-type: none;
+    transition: 0.2s ease;
+    overflow: visible;
+    cursor: pointer;
+    opacity: 1;
+}
+ul#dynamische-filter-liste li.filter-item li.filter input {
+    width: 100%;
+    margin: 0px;
+}
+
+
+/* Tags für auswählbare, statische Filter */
+ul#statische-filter-liste li.filter-item {
+    margin-bottom: 6px;
+    list-style: none;
+    position: relative;
+}
+ul#statische-filter-liste li.filter-item a::before {
+    color: #777;
+    content: '\002B';
+    margin-left: 5px;
+    padding-left: 8px;
+    float: right;
+    font-weight: bold;
+    padding-right: 8px;
+    border-radius: 12px;
+    background: var(--grey-1);
+    box-shadow: 0px 0px 1px grey;
+    cursor: pointer;
+}
+ul#statische-filter-liste li.filter-item.active a::before {
+    content: "-";
+    background: none;
+}
+/* Tags für auswählbare, statische Filter */ 
+ul#statische-filter-liste li.filter-item li.filter {
+    height: 0;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    transition: 0.2s ease-out;
+}
+ul#statische-filter-liste li.filter-item.active li.filter {
+    height: min-content;
+    padding: 6px 12px;
+    margin-bottom: 6px;
+    border: none;
+    outline: none;
+    margin-bottom: 6px;
+    border-radius: 8px;
+    padding: 6px 12px;
+    list-style-type: none;
+    transition: 0.2s ease;
+    background-color: var(--grey-2);
+    cursor: pointer;
+}
+
+ul#statische-filter-liste li.filter-item li.filter::before {
+    content: "+";
+    margin-right: 4px;
+}
+ul#statische-filter-liste li.filter-item li.filter:hover {
+    background-color: var(--grey-3);
+}
+
+/* Tags für ausgewählte Filter */
+#selected-filter {
+    margin-bottom: 20px;
+}
+#selected-filter li.filter {
+    margin-left: 0px;
+    border-radius: 8px;
+    padding: 6px 12px;
+    background-color: var(--color-secondary);
+    border: none;
+    transition: 0.2s ease;
+    position: relative;
+    list-style-type: none;
+}
+#selected-filter li.filter:not(:first-child) {
+    margin-top: 8px;
+}
+#selected-filter li.filter:hover {
+    background-color: red;
+    content: "Löschen";
+}
+#selected-filter li.filter:hover::after {
+    right: 20px;
+    opacity: 1;
+}
+#selected-filter li.filter::after {
+    width: 15px;
+    height: 19px;
+    right: 0px;
+    top: 10px;
+    content: "";
+    opacity: 0;
+    transition: 0.2s ease;
+    position: absolute;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url('/icons/icon-trash.png');
+}
+#selected-filter li.filter::before {
+    content: "";
+    margin-right: 4px;
+}
+#selected-filter li.filter a:first-child {
+    color: white;
+}
+#selected-filter li.filter a:not(:first-child) {
+    color: var(--grey-2);
+    margin-left: 8px;
+}
+
+@media (max-width: 969px) {
+
+    #selected-filter li.filter {
+        padding: 10px 14px;
+    }
+}
+
+
+
+/*--------------------------------------------------------------
+6. Footer
+--------------------------------------------------------------*/
+
+div.footer {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    width: 100%;
+    bottom: 0;
+    overflow: hidden;
+    background-color: var(--color-primary);
+}
+div.footer div.wrapper {
+    margin: 0 auto;
+    width: max-content;
+}
+div.footer div.wrapper ul li {
+    list-style: none;
+}
+div.footer div.wrapper ul li a {
+    text-decoration: none;
+    color: white;
+    position: relative;
+}
+div.footer div.wrapper ul li h1 {
+    color: #537dfa; 
+    margin-bottom: 20px;
+}
+div.footer div.wrapper ul li:not(:first-child) a {
+    color: rgb(158, 158, 158);
+}
+div.footer div.wrapper ul.column {
+    float: left;
+    margin-right: 70px;
+}
+div.footer div.wrapper ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    border-bottom: 2px solid #3366FF;
+    transition: 0.4s;
+}
+div.footer div.wrapper ul li a:hover::after {
+    width: 100%;
+}
+
+@media (max-width: 599px) {
+
+    div.footer {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    div.footer div.wrapper ul.column {
+        float: none;
+        margin-bottom: 25px;
+    }
+    div.footer div.wrapper {
+        margin: 0; 
+    }
+}
+
+
+
+/*--------------------------------------------------------------
+7. Menü
+--------------------------------------------------------------*/
+
+div.menu {
+    top: 0;
+    z-index: 1000;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    left: -100%;
+    overflow: auto;
+    display: flex;
+    transition: 0.3s ease;
+    background-color: none;
+}
+div.menu.open {
+    left: 0;
+    background-color: var(--color-secondary);
+}
+div.menu div.wrapper {
+    flex: 1;
+    transition: 0.2s ease;
+}
+div.menu div.wrapper:first-child {
+    background-color: white;
+    min-width: 350px;
+    max-width: 400px;
+}
+div.menu div.wrapper div.head input.search-field {
+    border: none;
+    width: 100%;
+    height: 40px;
+    margin-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 10px;
+    color: var(--color-primary);
+    background-color: var(--grey-2);
+    border: 2px solid var(--grey-2);
+}
+div.menu div.wrapper div.head input.search-field:focus {
+    border: 2px solid black;
+    outline: none;
+}
+div.menu div.wrapper div.head {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: white;
+}
+div.menu div.wrapper div.head h1 {
+    font-size: 28px;
+    margin-top: 15px;
+    color: var(--color-primary);
+}
+ul.sub-menu {
+    left: 100%;
+    display: none;
+    z-index: 1200;
+    min-width: 200px;
+    margin-top: -39px;
+    position: absolute;
+    background-color: white;
+}
+ul.sub-menu li.menu-item {
+    width: 200px;
+}
+li.menu-item {
+    padding: 15px;
+    cursor: pointer;
+    position: relative;
+    list-style-type: none;
+    background-color: var(--grey-1);
+}
+li.menu-item::after {
+    top: 11px;
+    right: 20px;
+    font-size: 22px;
+    content: "\203A";
+    position: absolute;
+    transform: rotate(0deg);
+    transition: 0.2s ease;
+}
+li.menu-item.active::after {
+    transform: rotate(90deg)
+}
+ul.sub-menu li.menu-item::before {
+    content: "+";
+    color: white;
+    text-align: center;
+    margin-right: 11px;
+    padding-left: 8px;
+    padding-right: 8px;
+    height: 100%;
+    border-radius: 20px;
+    background-color: var(--color-primary);
+}
+ul.sub-menu li.menu-item::after {
+    content: "";
+}
+li.menu-item:hover {
+    background-color: var(--grey-2);
+}
+li.menu-item.active {
+    background-color: var(--grey-2);
+}
+li.menu-item:hover ul.sub-menu {
+    display: block;
+}
+
+@media (max-width: 399px) {
+
+    div.menu {
+        width: 100%;
+        overflow-y: scroll;
+    }
+    div.menu div.wrapper:first-child {
+        width: 100%;
+        min-width: none;
+        max-width: none;
+    }
+    div.menu div.wrapper:not(:first-child) {
+        max-width: 0px;
+    }
+
+    /* Menu-Item */
+    li.menu-item ul.sub-menu {
+        position: initial;
+        display: block; 
+        margin: 0;
+        height: 0;
+        overflow: hidden;
+        transition: 0.2s ease;
+        background-color: var(--grey-2);
+    }
+    li.menu-item ul.sub-menu li.menu-item {
+        background-color: var(--grey-2);
+    }
+    li.menu-item:hover ul.sub-menu {
+        background-color: var(--grey-2);
+    }
+    li.menu-item:hover ul.sub-menu li.menu-item {
+        background-color: var(--grey-2);
+    }
+    li.menu-item ul.sub-menu li.menu-item {
+        width: 100%;
+        height: 0px;
+        padding: 0px;
+        transition: 0.2s ease;
+    }
+
+    /* Active */
+    li.menu-item.active ul.sub-menu {
+        width: 100%;
+        margin-top: 15px;
+        height: min-content;
+        background-color: var(--grey-2);
+    }
+    li.menu-item.active ul.sub-menu li.menu-item {
+        height: min-content;
+        transition: 0.2s ease;
+        padding: 15px 15px 15px 0px;
+        background-color: var(--grey-2);
+    }
+}
+
+
+
+
+/*--------------------------------------------------------------
+8. Cookies
+--------------------------------------------------------------*/
+
+div.cookies {
+    bottom: 0;
+    width: 100%;
+    padding: 20px;
+    z-index: 1100;
+    position: fixed;
+    background-color: white;
+    box-shadow: 0px 0px 100px black;    
+}
+
+div.cookies.hidden {
+    display: none;
+}
+
+
+
+/*--------------------------------------------------------------
+10. Login und Registrierung
+--------------------------------------------------------------*/
+
+div.login-form {
+    padding: 20px;
+    margin: 0 auto;
+    box-shadow: 0px 0px 1px grey;
+    width: var(--inner-form-width);
+    background-color: var(--grey-1);
+}
+div.login-form input:not(:last-child), div.login-form h1:not(:last-child) {
+    margin-bottom: 30px;
+}
+div.login-form input::placeholder {
+    color: var(--grey-3);
+}
+div.login-form h1 {
+    text-align: center;
+}
+div.login-form div.wrapper {
+    width: 100%;
+    text-align: center;
+}
+div.login-form div.wrapper input {
+    margin-bottom: 0px;
+}
+
+
+
+/*--------------------------------------------------------------
+11. Tab
+--------------------------------------------------------------*/
+
+button.tab-link {
+    flex: 1;
+    outline: none;
+    padding: 15px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    transition: 0.2s ease;
+    background-color: var(--grey-1);
+    border-bottom: 2px solid var(--color-secondary);
+}
+button.tab-link:hover {
+    background-color: var(--grey-2);
+}
+div.tab-bar {
+    margin: 0 auto;
+    padding-top: 50px;
+    width: var(--inner-width);
+}
+div.tab-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
+div.tab-content:not(:first-child) {
+    display: none;
+}
+
+/* Form für Eingaben */
+div.form {
+    padding: 20px 20px;
+    margin-bottom: 20px;
+    transition: 0.2s ease;
+    box-shadow: 0px 0px 1px grey;
+    background-color: var(--grey-1);
+}
+div.form div.wrapper:not(:first-child) {
+    margin-top: 20px;
+}
+div.form input[type="text"] {
+    width: 100%;
+    border: none;
+    outline: none;
+    color: black;
+    border-radius: 6px;
+    padding: 12px 20px;
+    background-color: white;
+}
+div.form input::placeholder {
+    color: var(--grey-2)
+}
+
+@media (max-width: 969px) {
+    div.tab-bar {
+        padding-top: 0;
+    }
+    div.tab-link {
+        padding-top: 20px;
+        padding-left: 20px;
+    }
+}
+
+
+
+
+
+/*--------------------------------------------------------------
+12. Selectbox
+--------------------------------------------------------------*/
+select.box {
+    width: 100%;
+    padding: 6px;
+    background: var(--grey-1);
+    border: none;
+    border-radius: 6px;
+    outline: none;
+    box-shadow: 0px 0px 1px grey;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    position: relative;
+    cursor: pointer;
+}
+select.box::after {
+    color: black;
+    margin-right: 0px;
+    margin-top: 0px;
+    width: 10px;
+    height: 10px;
+    content: 'Down';
+}
+
+
+@media (max-width: 969px) {
+
+    select.box {
+        padding: 12px;
+    }
+}
+
+/*--------------------------------------------------------------
+13. Elemente
+--------------------------------------------------------------*/
+.button, .button-primary, .button-secondary {
+    padding: 12px 20px;
+    border: none;
+    outline: none;
+    border-radius: 30px;
+    margin: 0 auto;
+    cursor: pointer;
+}
+.button {
+    background: none;
+    color: var(--color-secondary);
+}
+.button-primary {
+    background-color: var(--color-secondary);
+    color: white;
+}
+.button-secondary {
+    background-color: white;
+    color: var(--color-secondary);
+}
+
+.button-title {
+    color: #537dfa;
+    font-size: 1.8em;
+    background: none;
+    border: none;
+    outline: none;
+    padding: 0px;    
+    font-family: var(--font);
+    font-weight: 600;
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 0px;
+}
+
+/* Input */
+.input-primary {
+    width: 100%;
+    padding: 12px 20px;
+    background-color: white;
+    color: black;
+    border: none;
+    outline: none;
+    border-radius: 30px;
+    cursor: pointer;
+}
+.input-primary::placeholder {
+    color: var(--grey-4);
+}
+
+
+
+
+
+/*--------------------------------------------------------------
+13. Elemente
+--------------------------------------------------------------*/
+
+div.slider-thumbs-container {
+    position: relative;
+    width: 100%;
+    height: auto;
+    margin-top: 20px;
+}
+div.slider-values-container {
+    display: flex;
+    margin-top: 10px;
+}
+div.slider-values-container input {
+    background: var(--color-primary);
+    color: var(--grey-1);
+    border: none;
+    border-radius: 8px;
+    font-size: 0.6em;
+    padding: 0px 6px;
+}
+div.slider-values-container a {
+    flex: 1;
+    width: 100%;
+    background: var(--grey-1);
+    border: 1px solid var(--grey-2);
+    outline: none;
+    padding: 0px 6px;
+    border-radius: 8px;
+}
+div.slider-values-container input:focus {
+    border: 1px solid var(--color-secondary);
+}
+div.slider-values-container input:not(:first-child), div.slider-values-container a:not(:first-child) {
+    margin-left: 10px;
+}
+input[type="range"]{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 100%;
+    outline: none;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    background-color: transparent;
+    pointer-events: none;
+}
+.slider-track{
+    width: 100%;
+    height: 5px;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    background-color: #3264fe;
+    border-radius: 5px;
+}
+input[type="range"]::-webkit-slider-runnable-track{
+    -webkit-appearance: none;
+    height: 5px;
+}
+input[type="range"]::-moz-range-track{
+    -moz-appearance: none;
+    height: 5px;
+}
+input[type="range"]::-ms-track{
+    appearance: none;
+    height: 5px;
+}
+input[type="range"]::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    height: 1.7em;
+    width: 1.7em;
+    background-color: #3264fe;
+    cursor: pointer;
+    margin-top: -9px;
+    pointer-events: auto;
+    border-radius: 50%;
+}
+input[type="range"]::-moz-range-thumb{
+    -webkit-appearance: none;
+    height: 1.7em;
+    width: 1.7em;
+    cursor: pointer;
+    border-radius: 50%;
+    background-color: #3264fe;
+    pointer-events: auto;
+}
+input[type="range"]::-ms-thumb{
+    appearance: none;
+    height: 1.7em;
+    width: 1.7em;
+    cursor: pointer;
+    border-radius: 50%;
+    background-color: #3264fe;
+    pointer-events: auto;
+}
+input[type="range"]:active::-webkit-slider-thumb{
+    background-color: #ffffff;
+    border: 3px solid #3264fe;
+}
+.values{
+    background-color: #3264fe;
+    width: 32%;
+    position: relative;
+    margin: auto;
+    padding: 10px 0;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 25px;
+    color: #ffffff;
+}
+.values:before {
+    content: "";
+    position: absolute;
+    height: 0;
+    width: 0;
+    border-top: 15px solid #3264fe;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    margin: auto;
+    bottom: -14px;
+    left: 0;
+    right: 0;
+}

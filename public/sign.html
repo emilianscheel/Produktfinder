@@ -1,0 +1,61 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Produktfinder - Anmelden</title>
+        <!-- Css -->
+        <link href="/css/root.css" rel="stylesheet" type="text/css">
+        <link rel="icon" href="/icons/icon-logo.png">
+        <!-- JavaScript -->
+        <script type="text/javascript" src="/javascript/script.js"></script>
+        <script type="text/javascript" src="/javascript/modules/jquery.min.js"></script>
+    </head>
+    <body>
+        <script type="module">
+
+            import { load } from "./javascript/modules/document.js";
+            import { Backend } from "./javascript/modules/backend.js";
+
+            $(document.body).append(load("/footer.html"));
+            $(document.body).append(load("/cookie_window.html"));
+
+            $('#button-signin').on('click', function() {
+                Backend.signIn($('#login-mail').val(), $('#login-password').val());
+            })
+
+            $('#button-signup').on('click', function() {
+                Backend.signUp($('#login-mail').val(), $('#login-password').val());
+            })
+
+            $('#button-title').on('click', function () {
+                window.open(document.location.protocol + '/', '_self')
+            })
+        </script>
+
+        <!-- Header -->
+        <div id="header" class="header">
+            <!-- Text-Element -->
+            <div class="text-element">
+                <button class="button-title" id="button-title">Produktfinder</button>
+            </div>
+            <!-- Rechtes-Element -->
+            <div class="right-element">
+                <button class="button-primary" id="button-help">Hilfe</button>
+            </div>
+        </div>
+
+        <!-- Zeige den Inhalt der Seite. -->
+        <div class="seite" id="seite">
+            <!-- Filter -->
+            <div class="login-form">
+
+                <h1>Anmelden oder Registrieren</h1>
+                <input type="email" placeholder="Email-Adresse" class="input-primary" id="login-mail">
+                <input type="password" placeholder="Passwort" class="input-primary" id="login-password">
+                <div class="wrapper">
+                    <input type="button" value="Anmelden" class="button-primary" id="button-signin">
+                    <input type="button" value="Registrieren" class="button-secondary" id="button-signup">
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

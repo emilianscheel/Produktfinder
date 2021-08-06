@@ -1,0 +1,23 @@
+<script type="module">
+    import { ladeKategorien } from './javascript/modules/main.js'
+
+    $('#button-close-menu').on('click', function() {
+        toggleMenu();
+    })
+
+    $('#suche-kategorien').on('input', function() {
+        ladeKategorien($(this).val());
+    })
+</script>
+
+<div id="menu" class="menu">
+    <div class="wrapper">
+        <div class="head">
+            <button id="button-close-menu" class="button-primary">Schließen</button>
+            <h1>Kategorien</h1>
+            <input type="search" id="suche-kategorien" class="search-field" placeholder="Suche nach z.B. „Kategorie“ oder „Laptop“...">
+        </div>
+        <ul id="kategorien-liste"></ul>
+    </div>
+    <div class="wrapper"></div>
+</div>

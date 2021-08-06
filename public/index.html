@@ -1,0 +1,98 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Produktfinder</title>
+        <!-- Css -->
+        <link href="/css/root.css" rel="stylesheet" type="text/css">
+        <link rel="icon" href="/icons/icon-logo.png">
+        <!-- JavaScript -->
+        <script type="text/javascript" src="/javascript/script.js"></script>
+        <script type="text/javascript" src="/javascript/modules/jquery.min.js"></script>
+    </head>
+
+    <body>
+        <script type="module">
+
+            import { ladeProdukte, ladeKategorien, ladeFilter } from './javascript/modules/main.js';
+            import { load } from "./javascript/modules/document.js";
+            
+            $(document.body).prepend(load("/header.html"))
+            $(document.body).append(load("/cookie_window.html"));
+            $(document.body).append(load("/menu.html"));
+            $(document.body).append(load("/footer.html"));
+
+            let query = new URLSearchParams(document.location.search)
+            if (query.get('attrs')) {
+                $('#attrs-select').val(query.get('attrs')).change()
+            }
+            if (query.get('sort')) {
+                $('#sort-select').val(query.get('sort')).change()
+            }
+
+            $("#attrs-select").on("change", function() {
+                let query = new URLSearchParams(document.location.search)
+                query.set('attrs', $(this).val());
+                window.open('?' + query.toString(), '_self');
+            })
+
+            $("#sort-select").on("change", function() {
+                let query = new URLSearchParams(document.location.search)
+                query.set('sort', $(this).val());
+                window.open('?' + query.toString(), '_self');
+            })
+            
+            // Lade die Produkte und formatiere sie in HTML.
+            ladeProdukte();
+            // Lade die Kategorien in das Menü.
+            ladeKategorien();
+            // Lade die Filter zum Suchen von Produkten.
+            ladeFilter();
+
+            $('#produkt-anzahl').text(`Anzahl: ${$('#produkt-liste').children().length}`)
+            $('#filter-anzahl').text(`Anzahl: ${$('#selected-filter').children().length}`)
+            $('#suche-produkte').val(new URLSearchParams(document.location.search).get('text'))
+        </script>
+        <!-- Zeige den Inhalt der Seite. -->
+        <div class="seite" id="seite">
+            <!-- linke Spalte -->
+            <div class="column">
+                <h1>Einstellungen</h1>
+                <div>
+                    <!-- Einstellung: Anzahl Eigenschaften pro Produkt -->
+                    <form>
+                        <label for="attrs-select">Eigenschaften pro Produkt:</label>
+                        <select name="attrs-select" id="attrs-select" class="box">
+                            <option value="4">Maximal 4</option>
+                            <option value="6">Maximal 6</option>
+                            <option value="8">Maximal 8</option>
+                            <option value="10">Maximal 10</option>
+                            <option value="12">Maximal 12</option>
+                        </select>
+                    </form>
+                    <!-- Einstellung: Sortieren nach -->
+                    <form>
+                        <label for="sort-select">Sortieren nach:</label>
+                        <select name="sort-select" id="sort-select" class="box">
+                            <option value="price---ascending">Preis: aufsteigend</option>
+                            <option value="price---descending">Preis: absteigend</option>
+                            <option value="timestamp---ascending">Neuestes Produkt</option>
+                            <option value="name---ascending">Ohne Sortierung</option>
+                        </select>
+                    </form>
+                </div>
+                <!-- Filter -->
+                <h1>Filter</h1>
+                <h3 id="filter-anzahl">Anzahl: 0</h3>
+                <ul id="selected-filter"></ul>
+                <ul id="statische-filter-liste"></ul>
+                <ul id="dynamische-filter-liste"></ul>
+            </div>
+            <!-- rechte Spalte: Produkte -->
+            <div class="column">
+                <h1>Alle Produkte</h1>
+                <h3 id="produkt-anzahl">Anzahl: 0</h3>
+                <ul id="produkt-liste"></ul>
+            </div>
+        </div>
+    </body>
+</html>

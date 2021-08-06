@@ -1,0 +1,33 @@
+@import url('./style.css');
+@import url('../fonts/Padauk-Regular.css');
+@import url('../fonts/SF-Pro.css');
+
+:root {
+    --color-primary:    #22223b;
+    --color-secondary:  #3366FF;
+    --color-light:      #9a8c98;
+    --color-accent:     #c9ada7;
+    --grey-1:           #f5f3f4;
+    --grey-2:           #d3d3d3;
+    --grey-3:           #bbbbbb;
+    --grey-4:           #858585;
+    --font:             'Padauk';
+}
+
+
+:root {
+    --inner-width: 900px;
+    --inner-form-width: 500px;
+}
+
+@media (max-width: 969px) {
+    :root {
+        --inner-width: 100%;
+    }
+}
+
+@media (max-width: 599px) {
+    :root {
+        --inner-form-width: 100%;
+    }
+}

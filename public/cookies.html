@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Produktfinder</title>
+        <!-- Css -->
+        <link href="/css/root.css" rel="stylesheet" type="text/css">
+        <link rel="icon" href="/icons/icon-logo.png">
+        <!-- JavaScript -->
+        <script type="text/javascript" src="/javascript/script.js"></script>
+        <script type="text/javascript" src="/javascript/modules/jquery.min.js"></script>
+    </head>
+
+    <body>
+        <script type="module">
+
+            import { load } from "./javascript/modules/document.js";
+            import { JSONCookie } from "./javascript/modules/cookies.js"
+
+            $('#button-allow').on('click', function() {
+                JSONCookie.allowCookies();
+            })
+
+            $('#button-reject').on('click', function() {
+                JSONCookie.rejectCookies();
+            })
+
+            $('#button-title').on('click', function () {
+                window.open(document.location.protocol + '/', '_self')
+            })
+
+            $(document.body).append(load("/footer.html"));
+            $(document.body).append(load("/cookie_window.html"));
+        </script>
+
+        <!-- Header mit Menü-Icon, Webseiten-Titel, Account-Icon, Suchformular -->
+        <div id="header" class="header">
+            <!-- Webseiten-Titel -->
+            <div class="text-element">
+                <button class="button-title" id="button-title">Produktfinder</button>
+            </div>
+            <!-- Account-Button -->
+            <div class="right-element">
+                <button><a href="/sign.html">Konto</a></button>
+            </div>
+        </div>
+
+        <!-- Zeige den Inhalt der Seite. -->
+        <div class="seite" id="seite">
+            <h1>Cookies</h1>
+            <p>
+                Cookies werden verwendet, um Nutzerdaten zu speichern und personalisierte Produkte anzuzeigen. Möchtest du die Cookies...
+            </p>
+            <button class="button-primary" id="button-reject">Alle ablehnen</button>
+            <button class="button-primary" id="button-allow">Akzeptieren</button>
+        </div>
+    </body>
+</html>

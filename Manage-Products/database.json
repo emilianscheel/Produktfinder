@@ -16,27 +16,47 @@
                 "tags": [
                     {
                         "category": "Arbeitsspeicher",
-                        "title": "8 GB"
+                        "title": "8 GB",
+                        "type": "static"
                     },
                     {
                         "category": "Interner Speicher",
-                        "title": "256 GB"
+                        "title": "256 GB",
+                        "type": "static"
                     },
                     {
                         "category": "Displaytechnik",
-                        "title": "Retina"
+                        "title": "Retina",
+                        "type": "static"
                     },
                     {
                         "category": "Extras",
-                        "title": "Touch ID"
+                        "title": "Touch ID",
+                        "type": "static"
                     },
                     {
                         "category": "Anschlüsse",
-                        "title": "2 Thunderbolt"
+                        "title": "2 Thunderbolt",
+                        "type": "static"
                     },
                     {
                         "category": "Kategorie",
-                        "title": "Laptop"
+                        "title": "Laptop",
+                        "type": "static"
+                    },
+                    {
+                        "category": "Preis",
+                        "min": 1129,
+                        "max": 1449,
+                        "currency": "€",
+                        "type": "dynamic"
+                    },
+                    {
+                        "category": "Größe",
+                        "min": 34,
+                        "max": 36,
+                        "step": 2,
+                        "type": "dynamic"
                     }
                 ]
             }
@@ -59,31 +79,44 @@
                 "tags": [
                     {
                         "category": "Flächenleistung",
-                        "title": "2400 qm"
+                        "title": "2400 qm",
+                        "type": "static"
                     },
                     {
                         "category": "Interner Speicher",
-                        "title": "256 GB"
+                        "title": "256 GB",
+                        "type": "static"
                     },
                     {
                         "category": "Displaytechnik",
-                        "title": "Retina"
+                        "title": "Retina",
+                        "type": "static"
                     },
                     {
                         "category": "Extras",
-                        "title": "Touch ID"
+                        "title": "Touch ID",
+                        "type": "static"
                     },
                     {
                         "category": "Anschlüsse",
-                        "title": "2 Thunderbolt"
+                        "title": "2 Thunderbolt",
+                        "type": "static"
                     },
                     {
                         "category": "Tastaturlayout",
-                        "title": "Deutsch"
+                        "title": "Deutsch",
+                        "type": "static"
                     },
                     {
                         "category": "Kategorie",
-                        "title": "Desktop Computer"
+                        "title": "Desktop Computer",
+                        "type": "static"
+                    },
+                    {
+                        "category": "Preis",
+                        "min": 1129,
+                        "max": 1659,
+                        "type": "dynamic"
                     }
                 ]
             }
@@ -106,39 +139,54 @@
                 "tags": [
                     {
                         "category": "Kategorie",
-                        "title": "Smartphone"
+                        "title": "Smartphone",
+                        "type": "static"
                     },
                     {
                         "category": "Interner Speicher",
-                        "title": "64 GB"
+                        "title": "64 GB",
+                        "type": "static"
                     },
                     {
                         "category": "Prozessor",
-                        "title": "A13 Bionic"
+                        "title": "A13 Bionic",
+                        "type": "static"
                     },
                     {
                         "category": "SIM-Kartenformat",
-                        "title": "Nano SIM"
+                        "title": "Nano SIM",
+                        "type": "static"
                     },
                     {
                         "category": "SIM-Kartenformat",
-                        "title": "eSIM"
+                        "title": "eSIM",
+                        "type": "static"
                     },
                     {
                         "category": "Anschlüsse",
-                        "title": "2 Thunderbolt"
+                        "title": "2 Thunderbolt",
+                        "type": "static"
                     },
                     {
                         "category": "Kameraauflösung",
-                        "title": "12 Megapixel"
+                        "title": "12 Megapixel",
+                        "type": "static"
                     },
                     {
                         "category": "Bildschirmdiagonale",
-                        "title": "6.1 Zoll"
+                        "title": "6.1 Zoll",
+                        "type": "static"
                     },
                     {
                         "category": "Betriebssystem",
-                        "title": "iOS 13"
+                        "title": "iOS 13",
+                        "type": "static"
+                    },
+                    {
+                        "category": "Preis",
+                        "min": 679,
+                        "max": 899,
+                        "type": "dynamic"
                     }
                 ]
             }

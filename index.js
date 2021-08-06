@@ -45,6 +45,7 @@ app.use(exp.json());
 Gebe die Produkte zurück:
 -----------------------------------------------------------------------------------*/
 app.post('/produkte', (request, response) => {
+
     // Lade die Produkte.
     var produkte = minProd.loadProducts();
     // Falls Filter mitgegeben wurden, filter mit diesen.

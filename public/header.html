@@ -1,0 +1,35 @@
+<script>
+    $('#button-menu').on('click', function () {
+        toggleMenu()
+    })
+
+    $('#button-account').on('click', function () {
+        window.open(document.location.protocol + '/account.html', '_self')
+    })
+
+    $('#button-title').on('click', function () {
+        window.open(document.location.protocol + '/', '_self')
+    })
+
+    $('#suche-produkte').on('change', function () {
+        let query = new URLSearchParams(document.location.search)
+        query.set('text', $(this).val())
+        window.open('?' + query.toString(), '_self');
+    })
+
+    let query = new URLSearchParams(document.location.search)
+    $('#suche-produkte').val(query.get('text'))
+</script>
+
+<div id="header" class="header">
+    <div class="left-element">
+        <button class="button-primary" id="button-menu">&#9776; Kategorien</button>
+    </div>
+    <div class="left-element">
+        <button class="button-title" id="button-title">Produktfinder</button>
+    </div>
+    <div class="right-element">
+        <button class="button-primary" id="button-account">Konto</button>
+    </div>
+    <input class="search-field" type="search" id="suche-produkte" placeholder="In „Produkten“ suchen...">
+</div>
