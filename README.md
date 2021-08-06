@@ -1,4 +1,4 @@
-<img src="https://github.com/emilianscheel/Produktfinder/blob/main/public/assets/icons/icon-logo.png" width="100" height="100" />
+<img src="https://github.com/emilianscheel/Produktfinder/blob/main/public/icons/icon-logo.png" width="100" height="100" />
 
 # Produktfinder
 
