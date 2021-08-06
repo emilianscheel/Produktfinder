@@ -4,3 +4,6 @@
 
 Produktfinder ist eine Webseite, wo Händler Produkte aus ihren Onlineshops bewerben können. Produkte können über einen Filter-Algorythmus gefunden werden.
 
+### Neu: Dynamische Filter
+
+<img src="https://github.com/emilianscheel/Produktfinder/blob/main/Dynamische-Filter.png" width="300"/>
